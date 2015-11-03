@@ -21,7 +21,7 @@ BLOG_AUTHOR = "Jaakko Luttinen"  # (translatable)
 BLOG_TITLE = "Jaakko's blog"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "http://blog.jaakkoluttinen.fi/"
+SITE_URL = "http://www.jaakkoluttinen.fi/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "http://blog.jaakkoluttinen.fi/"
@@ -171,8 +171,8 @@ POSTS = (
     ("posts/*.ipynb", "posts", "post.tmpl"),
 )
 PAGES = (
-    ("stories/*.md", "stories", "story.tmpl"),
-    ("stories/*.ipynb", "stories", "story.tmpl"),
+    ("pages/*.md", "pages", "story.tmpl"),
+    ("pages/*.ipynb", "pages", "story.tmpl"),
 )
 
 
@@ -526,11 +526,14 @@ REDIRECTIONS = []
 # to `nikola deploy`.  If no arguments are specified, a preset
 # named `default` will be executed.  You can use as many presets
 # in a `nikola deploy` command as you like.
-# DEPLOY_COMMANDS = {
-#     'default': [
-#         "rsync -rav --delete output/ joe@my.site:/srv/www/site",
-#     ]
-# }
+import os
+OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'output')
+DEPLOY_COMMANDS = {
+    'default': [
+        #"rsync -rav --delete output/ joe@my.site:/srv/www/site",
+        "cd {0} ; git add ./* ; git commit ; git push".format(OUTPUT_DIR),
+    ]
+}
 
 # For user.github.io OR organization.github.io pages, the DEPLOY branch
 # MUST be 'master', and 'gh-pages' for other repositories.

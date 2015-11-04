@@ -63,21 +63,15 @@ Initializing git for the blog requires a few extra steps if we want to deploy
 the site to GitHub user/organization pages. First, initialize the repository:
 
     git init
+    git add *
+    git commit -am "Initial commit"
     
-Nikola reserves `master` branch for deploying the static output, so use, for
-instance, `source` branch for the source code:
+Add your GitHub repository:
 
-    git checkout --orphan source
-    
-Also, `origin` remote is reserved for the deployment remote, so use, for
-instance, `github` remote to store the source code repository:
-
-    git remote add github https://github.com/jluttine/jaakkoluttinen.fi.git
+    git remote add origin https://github.com/jluttine/jaakkoluttinen.fi.git
     
 Then just make an initial commit:
 
-    git add *
-    git commit -am "Initial commit"
     git push github -u
 
 
@@ -114,22 +108,11 @@ instructions for that. But you could use any other location and define your own
 `DEPLOY_COMMANDS` in `conf.py` to be used when running `nikola deploy`. For
 GitHub pages, you can use `nikola github_deploy`.
 
-Currently, `nikola github_deploy` works only if the remote name for serving the
-static pages is `origin`. Thus, use `origin` that purpose:
+Define the settings for the GitHub pages:
 
-    git remote add origin https://github.com/jluttine/jluttine.github.com.git
-
-    GITHUB_SOURCE_BRANCH = 'source'
-    GITHUB_DEPLOY_BRANCH = 'master'
+    GITHUB_SOURCE_BRANCH = 'master'
+    GITHUB_DEPLOY_BRANCH = 'gh-pages'
     GITHUB_REMOTE_NAME = 'origin'
-
-Before proceeding, commit your current changes to `source` branch.
-
-    git checkout --orphan master
-    git reset
-    git commit --allow-empty -m "Create deploy branch"
-    git push origin master:master -u
-    git checkout -f source
 
 If you are using a custom domain name, add `CNAME` to `files` directory:
 

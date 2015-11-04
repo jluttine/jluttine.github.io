@@ -1,0 +1,4 @@
+Sitemap: http://www.jaakkoluttinen.fi/sitemapindex.xml
+
+User-Agent: *
+Host: www.jaakkoluttinen.fi

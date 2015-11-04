@@ -540,7 +540,7 @@ REDIRECTIONS = []
 
 # For user.github.io OR organization.github.io pages, the DEPLOY branch
 # MUST be 'master', and 'gh-pages' for other repositories.
-GITHUB_SOURCE_BRANCH = 'deploy'
+GITHUB_SOURCE_BRANCH = 'source'
 GITHUB_DEPLOY_BRANCH = 'master'
 
 # The name of the remote where you wish to push to, using github_deploy.

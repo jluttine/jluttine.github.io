@@ -15,7 +15,6 @@ import time
 # ! Option (a) is used when you don't want that setting translated.
 # ! Option (b) is used for settings that are different in different languages.
 
-
 # Data about this site
 BLOG_AUTHOR = "Jaakko Luttinen"  # (translatable)
 BLOG_TITLE = "Jaakko's blog"  # (translatable)
@@ -24,7 +23,7 @@ BLOG_TITLE = "Jaakko's blog"  # (translatable)
 SITE_URL = "http://www.jaakkoluttinen.fi/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
-# BASE_URL = "http://blog.jaakkoluttinen.fi/"
+# BASE_URL = "http://www.jaakkoluttinen.fi/"
 BLOG_EMAIL = "jaakko.luttinen@iki.fi"
 BLOG_DESCRIPTION = "Bayesian Data Science with Python"  # (translatable)
 
@@ -167,12 +166,16 @@ THEME_COLOR = '#5670d4'
 #
 
 POSTS = (
-    ("posts/*.md", "posts", "post.tmpl"),
     ("posts/*.ipynb", "posts", "post.tmpl"),
+    ("posts/*.md", "posts", "post.tmpl"),
+    ("posts/*.rst", "posts", "post.tmpl"),
+    ("posts/*.txt", "posts", "post.tmpl"),
 )
 PAGES = (
     ("pages/*.md", "pages", "story.tmpl"),
     ("pages/*.ipynb", "pages", "story.tmpl"),
+    ("pages/*.rst", "stories", "story.tmpl"),
+    ("pages/*.txt", "stories", "story.tmpl"),
 )
 
 
@@ -526,22 +529,22 @@ REDIRECTIONS = []
 # to `nikola deploy`.  If no arguments are specified, a preset
 # named `default` will be executed.  You can use as many presets
 # in a `nikola deploy` command as you like.
-import os
-OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'output')
-DEPLOY_COMMANDS = {
-    'default': [
-        #"rsync -rav --delete output/ joe@my.site:/srv/www/site",
-        "cd {0} ; git add ./* ; git commit ; git push".format(OUTPUT_DIR),
-    ]
-}
+## import os
+## OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'output')
+## DEPLOY_COMMANDS = {
+##     'default': [
+##         #"rsync -rav --delete output/ joe@my.site:/srv/www/site",
+##         "cd {0} ; git add ./* ; git commit ; git push".format(OUTPUT_DIR),
+##     ]
+## }
 
 # For user.github.io OR organization.github.io pages, the DEPLOY branch
 # MUST be 'master', and 'gh-pages' for other repositories.
-# GITHUB_SOURCE_BRANCH = 'master'
-# GITHUB_DEPLOY_BRANCH = 'gh-pages'
+GITHUB_SOURCE_BRANCH = 'gh-pages'
+GITHUB_DEPLOY_BRANCH = 'master'
 
 # The name of the remote where you wish to push to, using github_deploy.
-# GITHUB_REMOTE_NAME = 'origin'
+GITHUB_REMOTE_NAME = 'website'
 
 # Where the output site should be located
 # If you don't use an absolute path, it will be considered as relative

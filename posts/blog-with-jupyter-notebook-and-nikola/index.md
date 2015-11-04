@@ -66,13 +66,10 @@ the site to GitHub user/organization pages. First, initialize the repository:
     git add *
     git commit -am "Initial commit"
     
-Add your GitHub repository:
+Push your code to a GitHub repository:
 
     git remote add origin https://github.com/jluttine/jaakkoluttinen.fi.git
-    
-Then just make an initial commit:
-
-    git push github -u
+    git push origin -u
 
 
 # Create content
@@ -97,7 +94,7 @@ http://127.0.0.1:8000/:
 
 Both of these processes will block your terminal until you stop them. Thus, I
 recommend opening separate dedicated terminals for the processes so they can run
-in the background without blocking your working terminal.
+without blocking your working terminal.
 
 
 # Deploy to GitHub pages

@@ -12,7 +12,6 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://www.jaakkoluttinen.fi/posts/blog-with-jupyter-notebook-and-nikola/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Jaakko Luttinen">
-<link rel="prev" href="../ipython-notebook-blogging-with-nikola/" title="IPython Notebook blogging with Nikola" type="text/html">
 <meta property="og:site_name" content="Jaakko's blog">
 <meta property="og:title" content="Blog with Jupyter Notebook and Nikola">
 <meta property="og:url" content="http://www.jaakkoluttinen.fi/posts/blog-with-jupyter-notebook-and-nikola/">
@@ -152,13 +151,9 @@ git commit -am "Initial commit"
 </pre>
 
 
-<p>Add your GitHub repository:</p>
+<p>Push your code to a GitHub repository:</p>
 <pre class="code literal-block">git remote add origin https://github.com/jluttine/jaakkoluttinen.fi.git
-</pre>
-
-
-<p>Then just make an initial commit:</p>
-<pre class="code literal-block">git push github -u
+git push origin -u
 </pre>
 
 
@@ -187,7 +182,7 @@ http://127.0.0.1:8000/:</p>
 
 <p>Both of these processes will block your terminal until you stop them. Thus, I
 recommend opening separate dedicated terminals for the processes so they can run
-in the background without blocking your working terminal.</p>
+without blocking your working terminal.</p>
 <h2>Deploy to GitHub pages</h2>
 <p>Because the compiled website is static, there are lots of options where to serve
 your website. GitHub is a convenient place to deploy, so here are basic
@@ -214,11 +209,7 @@ GITHUB_REMOTE_NAME = 'origin'
 <p>Now your blog should be running, go and check out.</p>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul class="pager hidden-print">
-<li class="previous">
-                <a href="../ipython-notebook-blogging-with-nikola/" rel="prev" title="IPython Notebook blogging with Nikola">Previous post</a>
-            </li>
-        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+    <aside class="postpromonav"><nav></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
         
         <div id="disqus_thread"></div>

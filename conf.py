@@ -544,7 +544,7 @@ GITHUB_SOURCE_BRANCH = 'source'
 GITHUB_DEPLOY_BRANCH = 'master'
 
 # The name of the remote where you wish to push to, using github_deploy.
-GITHUB_REMOTE_NAME = 'website'
+GITHUB_REMOTE_NAME = 'origin' # bug in ghp-import requires to use origin here
 
 # Where the output site should be located
 # If you don't use an absolute path, it will be considered as relative

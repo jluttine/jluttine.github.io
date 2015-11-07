@@ -2,7 +2,7 @@
 .. title: Blog with Jupyter (IPython) Notebook and Nikola
 .. slug: blog-with-jupyter-ipython-notebook-and-nikola
 .. date: 2015-11-04 19:05:01 UTC+02:00
-.. tags: 
+.. tags: jupyter,ipython,notebook,nikola
 .. category: 
 .. link: 
 .. description: 
@@ -23,21 +23,21 @@ your shell startup file:
 
     source virtualenvwrapper.sh
 
-Then crea
+Create (and activate) a virtual environment:
 
     mkdir -p /path/to/blog
     mkvirtualenv --system-site-packages -a /path/to/blog blog
     
 Install NumPy, SciPy, Matplotlib and Pandoc using the package manager of your
-system. Install Nikola to your virtual environment with some useful extra
-packages:
+system (or use, for instance, Anaconda). Install Nikola to your virtual
+environment with some useful extra packages:
 
     pip install nikola[extras]
 
 
 # Create the site
 
-Assuming you are in the directory of your blog, initialize Nikola there:
+Assuming that you are in the directory of your blog project, initialize Nikola:
 
     nikola init .
 
@@ -63,8 +63,8 @@ specified explicitly.
 
 # Initialize git
 
-Initializing git for the blog requires a few extra steps if we want to deploy
-the site to GitHub user/organization pages. First, initialize the repository:
+I recommend you use git and GitHub because it makes publishing and sharing your
+blog posts and notebooks easy.  The repository can be initialized as:
 
     git init
     git add *
@@ -72,17 +72,17 @@ the site to GitHub user/organization pages. First, initialize the repository:
     
 Push your code to a GitHub repository:
 
-    git remote add origin https://github.com/jluttine/jaakkoluttinen.fi.git
+    git remote add origin https://github.com/USERNAME/PROJECTNAME.git
     git push origin -u
 
 
 # Create content
 
-Create your first blog post and answer a few questions:
+Create your first blog post:
 
     nikola new_post -f ipynb
 
-Create your first page and answer a few questions:
+Create your first page:
 
     nikola new_page -f markdown
     
@@ -91,8 +91,9 @@ format. In order to edit the blog post, launch Jupyter Notebook:
 
     jupyter notebook posts
 
-In order to see your site, use Nikola to automatically refresh your site at
-http://127.0.0.1:8000/:
+Note that you may need to use `ipython` instead of `jupyter` if you have an old
+version installed.  In order to see your site, use Nikola to automatically
+refresh your site at http://127.0.0.1:8000/:
 
     nikola auto
 
@@ -107,9 +108,7 @@ Because the compiled website is static, there are lots of options where to serve
 your website. GitHub is a convenient place to deploy, so here are basic
 instructions for that. But you could use any other location and define your own
 `DEPLOY_COMMANDS` in `conf.py` to be used when running `nikola deploy`. For
-GitHub pages, you can use `nikola github_deploy`.
-
-Define the settings for the GitHub pages:
+GitHub pages, you can use `nikola github_deploy` and define a few parameters:
 
     GITHUB_SOURCE_BRANCH = 'master'
     GITHUB_DEPLOY_BRANCH = 'gh-pages'
@@ -117,10 +116,10 @@ Define the settings for the GitHub pages:
 
 If you are using a custom domain name, add `CNAME` to `files` directory:
 
-    echo www.jaakkoluttinen.fi > files/CNAME
+    echo mycustomdomain.com > files/CNAME
 
 Deploy the static site to GitHub:
 
     nikola github_deploy
 
-Now your blog should be running, go and check out.
+Now your blog should be up and running.

@@ -1,18 +1,27 @@
 <!-- 
-.. title: Blog with Jupyter (IPython) Notebook and Nikola
-.. slug: blog-with-jupyter-ipython-notebook-and-nikola
+.. title: How to blog with Jupyter (IPython) Notebook and Nikola
+.. slug: how-to-blog-with-jupyter-ipython-notebook-and-nikola
 .. date: 2015-11-04 19:05:01 UTC+02:00
-.. tags: jupyter,ipython,notebook,nikola
+.. tags: jupyter,ipython,notebook,nikola,conf.py
 .. category: 
 .. link: 
 .. description: 
 .. type: text
 -->
 
+I have thought about starting a blog for a few years now and when I recently
+found some amazing tools which can be used in a data science blog I got so
+excited that I just needed to finally start my blog.  I have used Python with
+the NumPy/SciPy stack
 
-http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html
+I got my inspiration mainly from [Damian Avila's
+blog](http://www.damian.oquanta.info/).
 
-http://sampathweb.com/posts/blogging-made-easy.html
+[a](http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html).
+[b](http://sampathweb.com/posts/blogging-made-easy.html)
+
+Although setting things up for the blog wasn't that difficult, there were some steps that neede....
+So, this first blog post will give you instructions on how to create a blog.
 
 
 # Set up the environment
@@ -123,3 +132,111 @@ Deploy the static site to GitHub:
     nikola github_deploy
 
 Now your blog should be up and running.
+
+
+# Customize the site
+
+## Choose a theme
+
+You can easily customize the look of your blog by creating a new theme.
+[Bootswatch](https://bootswatch.com/) offers free themes which can be easily
+used in your Nikola project.  After choosing the Bootswatch theme, create your
+custom theme:
+
+    nikola bootswatch_theme -n YOUR_THEME_NAME -s BOOTSWATCH_THEME_NAME -p ipython
+
+I recommend using IPython theme as the parent theme but you can choose any other
+[Nikola theme](https://themes.getnikola.com/). Now modify your `conf.py` to use
+the new custom theme:
+
+    THEME = "YOUR_THEME_NAME"
+
+## Add social media links
+
+If you want to use social media icons from [Font
+Awesome](https://fortawesome.github.io/Font-Awesome/), add the following
+definition to `conf.py`:
+
+```
+EXTRA_HEAD_DATA = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">'
+```
+
+Then you can add some social media icons and links, for instance, to the footer
+by adding the following lines to `conf.py`:
+
+```
+CONTENT_FOOTER = '''
+<div class="text-center">
+<p>
+<span class="fa-stack fa-2x">
+  <a href="https://twitter.com/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-twitter fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://github.com/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-github fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://www.linkedin.com/in/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-linkedin fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="mailto:{email}">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="/rss.xml">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+</p>
+<p>
+  Contents &copy; {date}  <a href="mailto:{email}">{author}</a>
+  &mdash;
+  {license}
+  &mdash;
+  Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
+</p>
+</div>
+'''
+```
+
+Just remember to change the usernames in each of the social media links.
+
+
+## Miscellaneous settings
+
+You can also add a license for your content:
+
+```
+LICENSE = """
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+  <img alt="Creative Commons License BY-SA"
+       style="border-width:0; margin-bottom:12px;"
+       src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png">
+</a>
+"""
+```
+
+And some other configuration suggestions for you to consider:
+
+```
+CREATE_SINGLE_ARCHIVE = True
+INDEX_TEASERS = True
+```
+
+That's it, I hope this was useful.  If you have ideas how to improve setting up
+the blog, please comment below.

@@ -127,9 +127,12 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ("/archive.html", "Archive"),
-        ("/categories/", "Tags"),
-        ("/rss.xml", "RSS feed"),
+        ("/", "Home"),
+        ("/blog/", "Blog"),
+        ("/archive/", "Archive"),
+        ("/about/", "About"),
+        #("/categories/", "Tags"),
+        #("/rss.xml", "RSS feed"),
     ),
 }
 
@@ -168,16 +171,16 @@ THEME_COLOR = '#5670d4'
 #
 
 POSTS = (
-    ("posts/*.ipynb", "posts", "post.tmpl"),
-    ("posts/*.md", "posts", "post.tmpl"),
-    ("posts/*.rst", "posts", "post.tmpl"),
-    ("posts/*.txt", "posts", "post.tmpl"),
+    ("posts/*.ipynb", "blog", "post.tmpl"),
+    ("posts/*.md", "blog", "post.tmpl"),
+    ("posts/*.rst", "blog", "post.tmpl"),
+    ("posts/*.txt", "blog", "post.tmpl"),
 )
 PAGES = (
-    ("pages/*.md", "pages", "story.tmpl"),
-    ("pages/*.ipynb", "pages", "story.tmpl"),
-    ("pages/*.rst", "stories", "story.tmpl"),
-    ("pages/*.txt", "stories", "story.tmpl"),
+    ("pages/*.md", "", "story.tmpl"),
+    ("pages/*.ipynb", "", "story.tmpl"),
+    ("pages/*.rst", "", "story.tmpl"),
+    ("pages/*.txt", "", "story.tmpl"),
 )
 
 
@@ -463,7 +466,7 @@ HIDDEN_AUTHORS = ['Guest']
 
 # Final location for the main blog page and sibling paginated pages is
 # output / TRANSLATION[lang] / INDEX_PATH / index-*.html
-# INDEX_PATH = ""
+INDEX_PATH = "blog"
 
 # Create per-month archives instead of per-year
 # CREATE_MONTHLY_ARCHIVE = False
@@ -479,8 +482,8 @@ CREATE_SINGLE_ARCHIVE = True
 # output / TRANSLATION[lang] / ARCHIVE_PATH / YEAR / index.html
 # output / TRANSLATION[lang] / ARCHIVE_PATH / YEAR / MONTH / index.html
 # output / TRANSLATION[lang] / ARCHIVE_PATH / YEAR / MONTH / DAY / index.html
-# ARCHIVE_PATH = ""
-# ARCHIVE_FILENAME = "archive.html"
+ARCHIVE_PATH = "archive"
+ARCHIVE_FILENAME = "index.html"
 
 # If ARCHIVES_ARE_INDEXES is set to True, each archive page which contains a list
 # of posts will contain the posts themselves. If set to False, it will be just a
@@ -787,6 +790,14 @@ LICENSE = """
 CONTENT_FOOTER = '''
 <div class="text-center">
 <p>
+
+<span class="fa-stack fa-2x">
+  <a href="/rss.xml">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
 <span class="fa-stack fa-2x">
   <a href="https://twitter.com/jluttine">
     <i class="fa fa-circle fa-stack-2x"></i>
@@ -816,11 +827,12 @@ CONTENT_FOOTER = '''
 </span>
 
 <span class="fa-stack fa-2x">
-  <a href="/rss.xml">
+  <a href="bitcoin:1GzmKNiohLGiU93NxvQGWe884ruu7M3th">
     <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
+    <i class="fa fa-bitcoin fa-inverse fa-stack-1x"></i>
   </a>
 </span>
+
 </p>
 <p>
   Contents &copy; {date}  <a href="mailto:{email}">{author}</a>
@@ -958,9 +970,11 @@ PRETTY_URLS = True
 # it's faster and the output looks better.
 # If you set USE_KATEX to True, you also need to add an extra CSS file
 # like this:
-EXTRA_HEAD_DATA = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">'
-# EXTRA_HEAD_DATA = """<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.css">"""
-# USE_KATEX = False
+EXTRA_HEAD_DATA = """
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+"""
+# <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+# USE_KATEX = True
 
 # Do you want to customize the nbconversion of your IPython notebook?
 # IPYNB_CONFIG = {}

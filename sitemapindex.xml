@@ -6,11 +6,31 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
+  <loc>http://www.jaakkoluttinen.fi/categories/confpy.xml</loc>
+  <lastmod>2015-11-10T17:10:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://www.jaakkoluttinen.fi/categories/ipython.xml</loc>
+  <lastmod>2015-11-10T17:10:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://www.jaakkoluttinen.fi/categories/jupyter.xml</loc>
+  <lastmod>2015-11-10T17:10:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://www.jaakkoluttinen.fi/categories/nikola.xml</loc>
+  <lastmod>2015-11-10T17:10:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://www.jaakkoluttinen.fi/categories/notebook.xml</loc>
+  <lastmod>2015-11-10T17:10:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>http://www.jaakkoluttinen.fi/rss.xml</loc>
-  <lastmod>2015-11-04T18:10:00Z</lastmod>
+  <lastmod>2015-11-10T17:12:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://www.jaakkoluttinen.fi/sitemap.xml</loc>
-  <lastmod>2015-11-04T18:10:00Z</lastmod>
+  <lastmod>2015-11-10T17:12:00Z</lastmod>
  </sitemap>
 </sitemapindex>

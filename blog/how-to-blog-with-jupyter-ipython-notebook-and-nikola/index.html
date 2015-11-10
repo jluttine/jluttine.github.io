@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to blog with Jupyter (IPython) Notebook and Nikola | Probably Data Science</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<meta name="author" content="Jaakko Luttinen">
+<meta property="og:site_name" content="Probably Data Science">
+<meta property="og:title" content="How to blog with Jupyter (IPython) Notebook and Nikola">
+<meta property="og:url" content="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/">
+<meta property="og:description" content="I have thought about starting a blog for a few years now and when I recently
+found some amazing tools which can be used in a data science blog I got so
+excited that I finally had to start my blog.  I ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-11-10T22:05:01+02:00">
+<meta property="article:tag" content="conf.py">
+<meta property="article:tag" content="ipython">
+<meta property="article:tag" content="jupyter">
+<meta property="article:tag" content="nikola">
+<meta property="article:tag" content="notebook">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.jaakkoluttinen.fi/">
+
+                <span id="blog-title">Probably Data Science</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../">Home</a>
+                </li>
+<li>
+<a href="../">Blog</a>
+                </li>
+<li>
+<a href="../../archive/">Archive</a>
+                </li>
+<li>
+<a href="../../about/">About</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="//duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="http://www.jaakkoluttinen.fi/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.md" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">How to blog with Jupyter (IPython) Notebook and Nikola</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Jaakko Luttinen
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2015-11-10T22:05:01+02:00" itemprop="datePublished" title="2015-11-10 22:05">2015-11-10 22:05</time></a></p>
+                <p class="commentline">            <a href=".#disqus_thread" data-disqus-identifier="cache/posts/how-to-blog-with-jupyter-ipython-notebook-and-nikola.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.md" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>I have thought about starting a blog for a few years now and when I recently
+found some amazing tools which can be used in a data science blog I got so
+excited that I finally had to start my blog.  I have used Python and the
+<a href="http://www.numpy.org/">NumPy</a>/<a href="http://scipy.org/">SciPy</a> stack to analyze and
+model data for a few years now.  I'm also passionate about open data and open
+science, so I've been excited about how <a href="http://jupyter.org/">Jupyter Notebooks</a>
+(a.k.a. <a href="http://ipython.org/">IPython Notebooks</a>) can be used to share a mixture
+of reproducible code and commentation.  And with Nikola, it is possible to set
+up a whole blogging system based on posts written as Notebooks making it
+possible for anyone to easily try the analysis shown in the post.</p>
+<p>I got some inspiration from <a href="http://www.damian.oquanta.info/">Damian Avila's
+blog</a>.  He has written <a href="http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html">instructions on
+blogging with Nikola and
+IPython</a>.
+However, the instructions are outdated so I thought I'd start my blog by giving
+my own tips on setting up Nikola with Jupyter.</p>
+<!-- TEASER_END -->
+
+<h2>Set up the environment</h2>
+<p>First, install NumPy, SciPy, <a href="http://matplotlib.org/">Matplotlib</a>, IPython and
+Jupyter (if available) by using the package manager of your system (or use, for
+instance, <a href="https://www.continuum.io/downloads">Anaconda</a>).  I recommend you use
+<a href="https://virtualenv.readthedocs.org/en/latest/">Virtualenv</a> and
+<a href="https://virtualenvwrapper.readthedocs.org/en/latest/">Virtualenvwrapper</a> for
+setting up a virtual environment for the blog.  After installing the packages,
+run the following command and put it to your shell startup file:</p>
+<pre class="code literal-block">source virtualenvwrapper.sh
+</pre>
+
+
+<p>Create (and activate) a virtual environment:</p>
+<pre class="code literal-block">mkdir -p /path/to/blog
+mkvirtualenv --system-site-packages -a /path/to/blog blog
+</pre>
+
+
+<p>Install Nikola to your virtual environment with some useful extra packages:</p>
+<pre class="code literal-block">pip install nikola[extras]
+</pre>
+
+
+<p>You can leave the virtual environment with <code>deactivate</code> and activate it with
+<code>workon blog</code>.</p>
+<h2>Create the site</h2>
+<p>Assuming that you are in the directory of your blog project, initialize Nikola:</p>
+<pre class="code literal-block">nikola init .
+</pre>
+
+
+<p>Edit conf.py and modify <code>POSTS</code> and <code>PAGES</code> as follows:</p>
+<pre class="code literal-block">POSTS = (
+    ("posts/*.ipynb", "blog", "post.tmpl"),
+    ("posts/*.md", "blog", "post.tmpl"),
+    ("posts/*.rst", "blog", "post.tmpl"),
+    ("posts/*.txt", "blog", "post.tmpl"),
+)
+PAGES = (
+    ("pages/*.md", "", "story.tmpl"),
+    ("pages/*.ipynb", "", "story.tmpl"),
+    ("pages/*.rst", "", "story.tmpl"),
+    ("pages/*.txt", "", "story.tmpl"),
+)
+</pre>
+
+
+<p>The first format entries are used as defaults, so with these settings blog posts
+would be Jupyter Notebooks and pages would be Markdown files by default if no
+format is specified explicitly.  Also, the blog posts would be located in
+<code>/blog/</code> and pages (e.g., <code>/about/</code>) in the root.</p>
+<h2>Initialize git</h2>
+<p>I recommend you use git and <a href="https://github.com/">GitHub</a> because it makes
+publishing and sharing your blog posts and notebooks easy.  The repository can
+be initialized as:</p>
+<pre class="code literal-block">git init
+git add *
+git commit -am "Initial commit"
+</pre>
+
+
+<p>Push your code to a GitHub repository:</p>
+<pre class="code literal-block">git remote add origin https://github.com/USERNAME/PROJECTNAME.git
+git push origin -u
+</pre>
+
+
+<h2>Create content</h2>
+<p>Create your first blog post:</p>
+<pre class="code literal-block">nikola new_post -f ipynb
+</pre>
+
+
+<p>Create your first page (for instance, "About"):</p>
+<pre class="code literal-block">nikola new_page -f markdown
+</pre>
+
+
+<p>It isn't necessary to specify <code>-f format</code> if you want to use the default
+format. In order to edit the blog post, launch Jupyter Notebook:</p>
+<pre class="code literal-block">jupyter notebook posts
+</pre>
+
+
+<p>Note that you may need to use <code>ipython</code> instead of <code>jupyter</code> if you have an old
+version installed.  In order to see your site, use Nikola to automatically
+refresh your site at http://127.0.0.1:8000/:</p>
+<pre class="code literal-block">nikola auto
+</pre>
+
+
+<p>Both of these processes will block your terminal until you stop them. Thus, I
+recommend opening separate dedicated terminals for the processes so they can run
+without blocking your working terminal.</p>
+<h2>Deploy to GitHub pages</h2>
+<p>Because the compiled website is static, there are lots of options where you can
+serve your website. GitHub is a convenient place to deploy, so here are basic
+instructions for that, but you could use any other location and define your own
+<code>DEPLOY_COMMANDS</code> (in <code>conf.py</code>) to be used when running <code>nikola deploy</code>. For
+GitHub pages, you can use <code>nikola github_deploy</code> after defining a few
+parameters:</p>
+<pre class="code literal-block">GITHUB_SOURCE_BRANCH = 'master'
+GITHUB_DEPLOY_BRANCH = 'gh-pages'
+GITHUB_REMOTE_NAME = 'origin'
+</pre>
+
+
+<p>If you are using a custom domain name, add <code>CNAME</code> to <code>files</code> directory:</p>
+<pre class="code literal-block">echo mycustomdomain.com &gt; files/CNAME
+</pre>
+
+
+<p>Deploy the static site to GitHub:</p>
+<pre class="code literal-block">nikola github_deploy
+</pre>
+
+
+<p>Now your blog should be up and running.</p>
+<h2>Fine-tune the settings</h2>
+<p>You can already start blogging.  The rest of this post will just provide some
+ideas on how to improve the settings.</p>
+<h3>Choose a theme</h3>
+<p>You can easily customize the look of your blog by creating a new theme.
+<a href="https://bootswatch.com/">Bootswatch</a> offers free themes which can be easily
+used in your Nikola project.  After choosing the Bootswatch theme, create your
+custom theme:</p>
+<pre class="code literal-block">nikola install_theme ipython
+nikola bootswatch_theme -n YOUR_THEME_NAME -s BOOTSWATCH_THEME_NAME -p ipython
+</pre>
+
+
+<p>I recommend using IPython theme as the parent theme but you can choose any other
+<a href="https://themes.getnikola.com/">Nikola theme</a>. Now modify your <code>conf.py</code> to use
+the new custom theme:</p>
+<pre class="code literal-block">THEME = "YOUR_THEME_NAME"
+</pre>
+
+
+<h3>Add social media links</h3>
+<p>If you want to use social media icons from <a href="https://fortawesome.github.io/Font-Awesome/">Font
+Awesome</a>, add the following
+definition to <code>conf.py</code>:</p>
+<pre class="code literal-block">EXTRA_HEAD_DATA = '&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"&gt;'
+</pre>
+
+
+<p>Then you can add some social media icons and links, for instance, to the footer
+by adding the following lines to <code>conf.py</code>:</p>
+<pre class="code literal-block">CONTENT_FOOTER = '''
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"fa-stack fa-2x"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/rss.xml"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-circle fa-stack-2x"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-rss fa-inverse fa-stack-1x"</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"fa-stack fa-2x"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://twitter.com/jluttine"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-circle fa-stack-2x"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-twitter fa-inverse fa-stack-1x"</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"fa-stack fa-2x"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/jluttine"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-circle fa-stack-2x"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-github fa-inverse fa-stack-1x"</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"fa-stack fa-2x"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.linkedin.com/in/jluttine"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-circle fa-stack-2x"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-linkedin fa-inverse fa-stack-1x"</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"fa-stack fa-2x"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"mailto:{email}"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-circle fa-stack-2x"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa fa-envelope fa-inverse fa-stack-1x"</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+  Contents <span class="ni">&amp;copy;</span> {date}  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"mailto:{email}"</span><span class="nt">&gt;</span>{author}<span class="nt">&lt;/a&gt;</span>
+  <span class="ni">&amp;mdash;</span>
+  {license}
+  <span class="ni">&amp;mdash;</span>
+  Powered by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://getnikola.com"</span> <span class="na">rel=</span><span class="s">"nofollow"</span><span class="nt">&gt;</span>Nikola<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+'''
+</pre>
+
+
+<p>Just remember to change the usernames in each of the social media links.</p>
+<h3>Write math</h3>
+<p>You can write math in your blog either inline as <code>\\( X \sim \mathcal{N}(0,1)
+\\)</code> which looks like \( X \sim \mathcal{N}(0,1) \) or in display mode as</p>
+<pre class="code literal-block">$$
+\mathcal{N}(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+</pre>
+
+
+<p>which looks like</p>
+<p>$$
+\mathcal{N}(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$</p>
+<p>By default, <a href="https://www.mathjax.org/">MathJax</a> is used but there is also
+support for a very promising fast math renderer called
+<a href="http://khan.github.io/KaTeX/">KaTeX</a>.  However, I wasn't able to enable KaTeX.</p>
+<h3>Add a license</h3>
+<p>You can also add a license for your content:</p>
+<pre class="code literal-block">LICENSE = """
+<span class="nt">&lt;a</span> <span class="na">rel=</span><span class="s">"license"</span> <span class="na">href=</span><span class="s">"https://creativecommons.org/licenses/by-sa/4.0/"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"Creative Commons License BY-SA"</span>
+       <span class="na">style=</span><span class="s">"border-width:0; margin-bottom:12px;"</span>
+       <span class="na">src=</span><span class="s">"https://i.creativecommons.org/l/by-sa/4.0/88x31.png"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/a&gt;</span>
+"""
+</pre>
+
+
+<h3>Remove .html suffix from archive.html</h3>
+<p>This is just a small annoyance, but by default, the archive is located in
+<code>/archive.html</code>.  If you want it to be in <code>/archive/</code>, add the following lines
+to your <code>conf.py</code>:</p>
+<pre class="code literal-block">ARCHIVE_PATH = "archive"
+ARCHIVE_FILENAME = "index.html"
+</pre>
+
+
+<p>Remember to also fix the navigation links:</p>
+<pre class="code literal-block">NAVIGATION_LINKS = {
+    DEFAULT_LANG: (
+        ("/archive/", "Archive"),
+        ("/categories/", "Tags"),
+        ("/rss.xml", "RSS feed"),
+        ("/about/", "About"),
+    ),
+}
+</pre>
+
+
+<h3>Miscellaneous settings</h3>
+<p>Here are some other configuration suggestions for you to consider.  If you want
+the archive to show all your blog posts as a single list instead of a year and
+month based hierarchy, use the following setting:</p>
+<pre class="code literal-block">CREATE_SINGLE_ARCHIVE = True
+</pre>
+
+
+<p>To show only short teasers instead of full posts on index pages:</p>
+<pre class="code literal-block">INDEX_TEASERS = True
+</pre>
+
+
+<p>Remember to mark the teasers in your blog posts with <code>&lt;!-- TEASER_END --&gt;</code> in
+Markdown.</p>
+<h2>Conclusion</h2>
+<p>That's it, I hope this was useful.  Of course, there are lots of configuration
+options to modify your site, so I recommend you read the brief <a href="https://getnikola.com/handbook.html">Nikola
+handbook</a> to get an overview.  Also, if you
+have ideas on how to improve the setting up of a blog, please comment below.</p>
+<p>And yes, I know, this blog post isn't a notebook.  But the next one will be and
+in that post I'll share one amazing tool that I just discovered a few days ago
+related to notebook blogging.</p>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/confpy/" rel="tag">conf.py</a></li>
+            <li><a class="tag p-category" href="../../categories/ipython/" rel="tag">ipython</a></li>
+            <li><a class="tag p-category" href="../../categories/jupyter/" rel="tag">jupyter</a></li>
+            <li><a class="tag p-category" href="../../categories/nikola/" rel="tag">nikola</a></li>
+            <li><a class="tag p-category" href="../../categories/notebook/" rel="tag">notebook</a></li>
+        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="jaakkoluttinen",
+            disqus_url="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/",
+        disqus_title="How to blog with Jupyter (IPython) Notebook and Nikola",
+        disqus_identifier="cache/posts/how-to-blog-with-jupyter-ipython-notebook-and-nikola.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="jaakkoluttinen";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer"><div class="text-center">
+<p>
+
+<span class="fa-stack fa-2x">
+  <a href="../../rss.xml">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://twitter.com/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-twitter fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://github.com/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-github fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://www.linkedin.com/in/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-linkedin fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="mailto:jaakko.luttinen@iki.fi">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="bitcoin:1GzmKNiohLGiU93NxvQGWe884ruu7M3th">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-bitcoin fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+</p>
+<p>
+  Contents © 2015  <a href="mailto:jaakko.luttinen@iki.fi">Jaakko Luttinen</a>
+  —
+  
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+  <img alt="Creative Commons License BY-SA" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+
+  —
+  Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
+</p>
+</div>
+  
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

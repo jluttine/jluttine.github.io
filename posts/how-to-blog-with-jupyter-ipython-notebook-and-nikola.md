@@ -1,7 +1,7 @@
 <!-- 
 .. title: How to blog with Jupyter (IPython) Notebook and Nikola
 .. slug: how-to-blog-with-jupyter-ipython-notebook-and-nikola
-.. date: 2015-11-04 19:05:01 UTC+02:00
+.. date: 2015-11-10 22:05:01 UTC+02:00
 .. tags: jupyter,ipython,notebook,nikola,conf.py
 .. category: 
 .. link: 
@@ -11,24 +11,33 @@
 
 I have thought about starting a blog for a few years now and when I recently
 found some amazing tools which can be used in a data science blog I got so
-excited that I just needed to finally start my blog.  I have used Python with
-the NumPy/SciPy stack
+excited that I finally had to start my blog.  I have used Python and the
+[NumPy](http://www.numpy.org/)/[SciPy](http://scipy.org/) stack to analyze and
+model data for a few years now.  I'm also passionate about open data and open
+science, so I've been excited about how [Jupyter Notebooks](http://jupyter.org/)
+(a.k.a. [IPython Notebooks](http://ipython.org/)) can be used to share a mixture
+of reproducible code and commentation.  And with Nikola, it is possible to set
+up a whole blogging system based on posts written as Notebooks making it
+possible for anyone to easily try the analysis shown in the post.
 
-I got my inspiration mainly from [Damian Avila's
-blog](http://www.damian.oquanta.info/).
+I got some inspiration from [Damian Avila's
+blog](http://www.damian.oquanta.info/).  He has written [instructions on
+blogging with Nikola and
+IPython](http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html).
+However, the instructions are outdated so I thought I'd start my blog by giving
+my own tips on setting up Nikola with Jupyter.
 
-[a](http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html).
-[b](http://sampathweb.com/posts/blogging-made-easy.html)
-
-Although setting things up for the blog wasn't that difficult, there were some steps that neede....
-So, this first blog post will give you instructions on how to create a blog.
-
+<!-- TEASER_END -->
 
 # Set up the environment
 
-I recommend you use Virtualenv and Virtualenvwrapper for setting up the
-environment.  After installing both, run the following command and put it to
-your shell startup file:
+First, install NumPy, SciPy, [Matplotlib](http://matplotlib.org/), IPython and
+Jupyter (if available) by using the package manager of your system (or use, for
+instance, [Anaconda](https://www.continuum.io/downloads)).  I recommend you use
+[Virtualenv](https://virtualenv.readthedocs.org/en/latest/) and
+[Virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/) for
+setting up a virtual environment for the blog.  After installing the packages,
+run the following command and put it to your shell startup file:
 
     source virtualenvwrapper.sh
 
@@ -37,11 +46,12 @@ Create (and activate) a virtual environment:
     mkdir -p /path/to/blog
     mkvirtualenv --system-site-packages -a /path/to/blog blog
     
-Install NumPy, SciPy, Matplotlib and Pandoc using the package manager of your
-system (or use, for instance, Anaconda). Install Nikola to your virtual
-environment with some useful extra packages:
+Install Nikola to your virtual environment with some useful extra packages:
 
     pip install nikola[extras]
+
+You can leave the virtual environment with `deactivate` and activate it with
+`workon blog`.
 
 
 # Create the site
@@ -53,27 +63,29 @@ Assuming that you are in the directory of your blog project, initialize Nikola:
 Edit conf.py and modify `POSTS` and `PAGES` as follows:
 
     POSTS = (
-        ("posts/*.ipynb", "posts", "post.tmpl"),
-        ("posts/*.md", "posts", "post.tmpl"),
-        ("posts/*.rst", "posts", "post.tmpl"),
-        ("posts/*.txt", "posts", "post.tmpl"),
+        ("posts/*.ipynb", "blog", "post.tmpl"),
+        ("posts/*.md", "blog", "post.tmpl"),
+        ("posts/*.rst", "blog", "post.tmpl"),
+        ("posts/*.txt", "blog", "post.tmpl"),
     )
     PAGES = (
-        ("pages/*.md", "pages", "story.tmpl"),
-        ("pages/*.ipynb", "pages", "story.tmpl"),
-        ("pages/*.rst", "stories", "story.tmpl"),
-        ("pages/*.txt", "stories", "story.tmpl"),
+        ("pages/*.md", "", "story.tmpl"),
+        ("pages/*.ipynb", "", "story.tmpl"),
+        ("pages/*.rst", "", "story.tmpl"),
+        ("pages/*.txt", "", "story.tmpl"),
     )
 
-The first entries are used as defaults. With these settings, blog posts would be
-Jupyter Notebooks and pages would be Markdown files by default if no format is
-specified explicitly.
+The first format entries are used as defaults, so with these settings blog posts
+would be Jupyter Notebooks and pages would be Markdown files by default if no
+format is specified explicitly.  Also, the blog posts would be located in
+`/blog/` and pages (e.g., `/about/`) in the root.
 
 
 # Initialize git
 
-I recommend you use git and GitHub because it makes publishing and sharing your
-blog posts and notebooks easy.  The repository can be initialized as:
+I recommend you use git and [GitHub](https://github.com/) because it makes
+publishing and sharing your blog posts and notebooks easy.  The repository can
+be initialized as:
 
     git init
     git add *
@@ -91,7 +103,7 @@ Create your first blog post:
 
     nikola new_post -f ipynb
 
-Create your first page:
+Create your first page (for instance, "About"):
 
     nikola new_page -f markdown
     
@@ -113,11 +125,12 @@ without blocking your working terminal.
 
 # Deploy to GitHub pages
 
-Because the compiled website is static, there are lots of options where to serve
-your website. GitHub is a convenient place to deploy, so here are basic
-instructions for that. But you could use any other location and define your own
-`DEPLOY_COMMANDS` in `conf.py` to be used when running `nikola deploy`. For
-GitHub pages, you can use `nikola github_deploy` and define a few parameters:
+Because the compiled website is static, there are lots of options where you can
+serve your website. GitHub is a convenient place to deploy, so here are basic
+instructions for that, but you could use any other location and define your own
+`DEPLOY_COMMANDS` (in `conf.py`) to be used when running `nikola deploy`. For
+GitHub pages, you can use `nikola github_deploy` after defining a few
+parameters:
 
     GITHUB_SOURCE_BRANCH = 'master'
     GITHUB_DEPLOY_BRANCH = 'gh-pages'
@@ -134,7 +147,10 @@ Deploy the static site to GitHub:
 Now your blog should be up and running.
 
 
-# Customize the site
+# Fine-tune the settings
+
+You can already start blogging.  The rest of this post will just provide some
+ideas on how to improve the settings.
 
 ## Choose a theme
 
@@ -143,7 +159,10 @@ You can easily customize the look of your blog by creating a new theme.
 used in your Nikola project.  After choosing the Bootswatch theme, create your
 custom theme:
 
-    nikola bootswatch_theme -n YOUR_THEME_NAME -s BOOTSWATCH_THEME_NAME -p ipython
+```
+nikola install_theme ipython
+nikola bootswatch_theme -n YOUR_THEME_NAME -s BOOTSWATCH_THEME_NAME -p ipython
+```
 
 I recommend using IPython theme as the parent theme but you can choose any other
 [Nikola theme](https://themes.getnikola.com/). Now modify your `conf.py` to use
@@ -158,7 +177,7 @@ Awesome](https://fortawesome.github.io/Font-Awesome/), add the following
 definition to `conf.py`:
 
 ```
-EXTRA_HEAD_DATA = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">'
+EXTRA_HEAD_DATA = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">'
 ```
 
 Then you can add some social media icons and links, for instance, to the footer
@@ -169,37 +188,33 @@ CONTENT_FOOTER = '''
 <div class="text-center">
 <p>
 <span class="fa-stack fa-2x">
+  <a href="/rss.xml">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+<span class="fa-stack fa-2x">
   <a href="https://twitter.com/jluttine">
     <i class="fa fa-circle fa-stack-2x"></i>
     <i class="fa fa-twitter fa-inverse fa-stack-1x"></i>
   </a>
 </span>
-
 <span class="fa-stack fa-2x">
   <a href="https://github.com/jluttine">
     <i class="fa fa-circle fa-stack-2x"></i>
     <i class="fa fa-github fa-inverse fa-stack-1x"></i>
   </a>
 </span>
-
 <span class="fa-stack fa-2x">
   <a href="https://www.linkedin.com/in/jluttine">
     <i class="fa fa-circle fa-stack-2x"></i>
     <i class="fa fa-linkedin fa-inverse fa-stack-1x"></i>
   </a>
 </span>
-
 <span class="fa-stack fa-2x">
   <a href="mailto:{email}">
     <i class="fa fa-circle fa-stack-2x"></i>
     <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-
-<span class="fa-stack fa-2x">
-  <a href="/rss.xml">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
   </a>
 </span>
 </p>
@@ -217,7 +232,29 @@ CONTENT_FOOTER = '''
 Just remember to change the usernames in each of the social media links.
 
 
-## Miscellaneous settings
+## Write math
+
+You can write math in your blog either inline as `\\( X \sim \mathcal{N}(0,1)
+\\)` which looks like \\( X \sim \mathcal{N}(0,1) \\) or in display mode as
+
+```
+$$
+\mathcal{N}(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+```
+
+which looks like
+
+$$
+\mathcal{N}(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+
+By default, [MathJax](https://www.mathjax.org/) is used but there is also
+support for a very promising fast math renderer called
+[KaTeX](http://khan.github.io/KaTeX/).  However, I wasn't able to enable KaTeX.
+
+
+## Add a license
 
 You can also add a license for your content:
 
@@ -231,12 +268,58 @@ LICENSE = """
 """
 ```
 
-And some other configuration suggestions for you to consider:
+
+## Remove .html suffix from archive.html
+
+This is just a small annoyance, but by default, the archive is located in
+`/archive.html`.  If you want it to be in `/archive/`, add the following lines
+to your `conf.py`:
+
+```
+ARCHIVE_PATH = "archive"
+ARCHIVE_FILENAME = "index.html"
+```
+
+Remember to also fix the navigation links:
+
+```
+NAVIGATION_LINKS = {
+    DEFAULT_LANG: (
+        ("/archive/", "Archive"),
+        ("/categories/", "Tags"),
+        ("/rss.xml", "RSS feed"),
+        ("/about/", "About"),
+    ),
+}
+```
+
+## Miscellaneous settings
+
+Here are some other configuration suggestions for you to consider.  If you want
+the archive to show all your blog posts as a single list instead of a year and
+month based hierarchy, use the following setting:
 
 ```
 CREATE_SINGLE_ARCHIVE = True
+```
+
+To show only short teasers instead of full posts on index pages:
+
+```
 INDEX_TEASERS = True
 ```
 
-That's it, I hope this was useful.  If you have ideas how to improve setting up
-the blog, please comment below.
+Remember to mark the teasers in your blog posts with `<!-- TEASER_END -->` in
+Markdown.
+
+
+# Conclusion
+
+That's it, I hope this was useful.  Of course, there are lots of configuration
+options to modify your site, so I recommend you read the brief [Nikola
+handbook](https://getnikola.com/handbook.html) to get an overview.  Also, if you
+have ideas on how to improve the setting up of a blog, please comment below.
+
+And yes, I know, this blog post isn't a notebook.  But the next one will be and
+in that post I'll share one amazing tool that I just discovered a few days ago
+related to notebook blogging.

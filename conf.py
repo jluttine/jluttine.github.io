@@ -971,7 +971,7 @@ PRETTY_URLS = True
 # If you set USE_KATEX to True, you also need to add an extra CSS file
 # like this:
 EXTRA_HEAD_DATA = """
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 """
 # <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
 # USE_KATEX = True

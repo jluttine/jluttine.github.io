@@ -17,7 +17,7 @@ import time
 
 # Data about this site
 BLOG_AUTHOR = "Jaakko Luttinen"  # (translatable)
-BLOG_TITLE = "Probably Data Science"  # (translatable)
+BLOG_TITLE = "Jaakko Luttinen"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
 SITE_URL = "http://www.jaakkoluttinen.fi/"
@@ -654,7 +654,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 # depending on the value of INDEXES_PAGES_MAIN.
 #
 # (translatable) If the following is empty, defaults to BLOG_TITLE:
-# INDEXES_TITLE = ""
+INDEXES_TITLE = "Blog"
 #
 # (translatable) If the following is empty, defaults to ' [old posts,] page %d' (see above):
 # INDEXES_PAGES = ""
@@ -670,7 +670,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 # If False, index-1.html has the second-newest posts, index-2.html the third-newest,
 # and index-n.html the oldest posts. When this is active, old posts can be moved
 # to other index pages when new posts are added.
-# INDEXES_STATIC = True
+INDEXES_STATIC = True
 #
 # (translatable) If PRETTY_URLS is set to True, this setting will be used to create
 # prettier URLs for index pages, such as page/2/index.html instead of index-2.html.
@@ -823,13 +823,6 @@ CONTENT_FOOTER = '''
   <a href="mailto:{email}">
     <i class="fa fa-circle fa-stack-2x"></i>
     <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
-  </a>
-</span>
-
-<span class="fa-stack fa-2x">
-  <a href="bitcoin:1GzmKNiohLGiU93NxvQGWe884ruu7M3th">
-    <i class="fa fa-circle fa-stack-2x"></i>
-    <i class="fa fa-bitcoin fa-inverse fa-stack-1x"></i>
   </a>
 </span>
 

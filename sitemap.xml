@@ -7,23 +7,15 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://www.jaakkoluttinen.fi/</loc>
-  <lastmod>2015-11-10T16:38:00Z</lastmod>
+  <lastmod>2015-11-10T20:07:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/about/</loc>
   <lastmod>2015-11-10T15:19:00Z</lastmod>
  </url>
  <url>
-  <loc>http://www.jaakkoluttinen.fi/archive.html</loc>
-  <lastmod>2015-11-10T15:21:00Z</lastmod>
- </url>
- <url>
   <loc>http://www.jaakkoluttinen.fi/archive/</loc>
-  <lastmod>2015-11-10T16:40:00Z</lastmod>
- </url>
- <url>
-  <loc>http://www.jaakkoluttinen.fi/archive/archive.html</loc>
-  <lastmod>2015-11-10T16:38:00Z</lastmod>
+  <lastmod>2015-11-10T20:07:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/blog/</loc>
@@ -55,18 +47,6 @@
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/notebook/</loc>
-  <lastmod>2015-11-10T15:19:00Z</lastmod>
- </url>
- <url>
-  <loc>http://www.jaakkoluttinen.fi/posts/</loc>
-  <lastmod>2015-11-10T15:19:00Z</lastmod>
- </url>
- <url>
-  <loc>http://www.jaakkoluttinen.fi/posts/how-to-blog-with-jupyter-ipython-notebook-and-nikola/</loc>
-  <lastmod>2015-11-10T15:19:00Z</lastmod>
- </url>
- <url>
-  <loc>http://www.jaakkoluttinen.fi/posts/testi-vaan/</loc>
   <lastmod>2015-11-10T15:19:00Z</lastmod>
  </url>
 </urlset>

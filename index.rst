@@ -1,5 +1,5 @@
 <!-- 
-.. title: Jaakko Luttinen
+.. title: Home page
 .. slug: index
 .. date: 2015-11-10 17:09:00 UTC+02:00
 .. tags: 

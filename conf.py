@@ -778,10 +778,10 @@ LICENSE = ""
 # I recommend using the Creative Commons' wizard:
 # https://creativecommons.org/choose/
 LICENSE = """
-<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
-  <img alt="Creative Commons License BY-SA"
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+  <img alt="Creative Commons License BY"
        style="border-width:0; margin-bottom:12px;"
-       src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png">
+       src="https://i.creativecommons.org/l/by/4.0/88x31.png">
 </a>
 """
 

@@ -94,7 +94,7 @@ article: http://ogp.me/ns/article#
                     </p>
 <p class="sourceline"><a href="index.ipynb" id="sourcelink">Source</a></p>
  
-            <p class="sourceline"><a href="../../jluttine/jaakkoluttinen.fi/posts/sharing-interactive-jupyter-ipython-notebooks-with-binder.ipynb">Run Notebook</a></p>
+            <p class="sourceline"><a href="http://mybinder.org/repo/jluttine/jaakkoluttinen.fi/posts/sharing-interactive-jupyter-ipython-notebooks-with-binder.ipynb">Run Notebook</a></p>
 
         </div>
         
@@ -171,7 +171,7 @@ article: http://ogp.me/ns/article#
 
 <pre><code>... (to macro html_sourcelink)
 {% if post.compiler.name == "ipynb" %} 
-&lt;p class="sourceline"&gt;&lt;a href="{{ BINDER_URL}}/{{ post.config.GITHUB_REPOSITORY }}/{{ post.source_path }}"&gt;
+&lt;p class="sourceline"&gt;&lt;a href="{{ post.config.BINDER_URL}}/{{ post.config.GITHUB_REPOSITORY }}/{{ post.source_path }}"&gt;
 Run Notebook
 &lt;/a&gt;&lt;/p&gt;
 {% endif %}
@@ -358,8 +358,8 @@ export PATH=$PROJECT_DIR/bin:$PATH</code></pre>
   Contents © 2015  <a href="mailto:jaakko.luttinen@iki.fi">Jaakko Luttinen</a>
   —
   
-<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
-  <img alt="Creative Commons License BY-SA" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+  <img alt="Creative Commons License BY" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
 
   —
   Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>

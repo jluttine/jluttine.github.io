@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jaakko Luttinen (Notebook)</title><link>http://www.jaakkoluttinen.fi/</link><description></description><atom:link rel="self" type="application/rss+xml" href="http://www.jaakkoluttinen.fi/categories/notebook.xml"></atom:link><language>en</language><lastBuildDate>Sun, 15 Nov 2015 10:47:41 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Sharing interactive Jupyter (IPython) Notebooks with Binder</title><link>http://www.jaakkoluttinen.fi/blog/sharing-interactive-jupyter-ipython-notebooks-with-binder/</link><dc:creator>Jaakko Luttinen</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0"><channel><title>Jaakko Luttinen (Notebook)</title><link>http://www.jaakkoluttinen.fi/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://www.jaakkoluttinen.fi/categories/notebook.xml"></atom:link><language>en</language><lastBuildDate>Sun, 15 Nov 2015 11:47:39 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Sharing interactive Jupyter (IPython) Notebooks with Binder</title><link>http://www.jaakkoluttinen.fi/blog/sharing-interactive-jupyter-ipython-notebooks-with-binder/</link><dc:creator>Jaakko Luttinen</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;
@@ -17,11 +17,10 @@ science, so I've been excited about how &lt;a href="http://jupyter.org/"&gt;Jupy
 (a.k.a. &lt;a href="http://ipython.org/"&gt;IPython Notebooks&lt;/a&gt;) can be used to share a mixture
 of reproducible code and commentation.  And with Nikola, it is possible to set
 up a whole blogging system based on posts written as Notebooks making it
-possible for anyone to easily try the analysis shown in the post.&lt;/p&gt;
-&lt;p&gt;I got some inspiration from &lt;a href="http://www.damian.oquanta.info/"&gt;Damian Avila's
-blog&lt;/a&gt;.  He has written &lt;a href="http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html"&gt;instructions on
-blogging with Nikola and
+possible for anyone to easily try the analysis shown in the post.  I got some
+inspiration from &lt;a href="http://www.damian.oquanta.info/"&gt;Damian Avila's blog&lt;/a&gt;.  He has
+written &lt;a href="http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html"&gt;instructions on blogging with Nikola and
 IPython&lt;/a&gt;.
 However, the instructions are outdated so I thought I'd start my blog by giving
-my own tips on setting up Nikola with Jupyter.&lt;/p&gt;
+my own tips on setting up Nikola.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/"&gt;Read more…&lt;/a&gt; (5 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>conf.py</category><category>IPython</category><category>Jupyter</category><category>Nikola</category><category>Notebook</category><guid>http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/</guid><pubDate>Tue, 10 Nov 2015 20:05:01 GMT</pubDate></item></channel></rss>

@@ -18,14 +18,12 @@ science, so I've been excited about how [Jupyter Notebooks](http://jupyter.org/)
 (a.k.a. [IPython Notebooks](http://ipython.org/)) can be used to share a mixture
 of reproducible code and commentation.  And with Nikola, it is possible to set
 up a whole blogging system based on posts written as Notebooks making it
-possible for anyone to easily try the analysis shown in the post.
-
-I got some inspiration from [Damian Avila's
-blog](http://www.damian.oquanta.info/).  He has written [instructions on
-blogging with Nikola and
+possible for anyone to easily try the analysis shown in the post.  I got some
+inspiration from [Damian Avila's blog](http://www.damian.oquanta.info/).  He has
+written [instructions on blogging with Nikola and
 IPython](http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html).
 However, the instructions are outdated so I thought I'd start my blog by giving
-my own tips on setting up Nikola with Jupyter.
+my own tips on setting up Nikola.
 
 <!-- TEASER_END -->
 
@@ -316,10 +314,12 @@ Markdown.
 # Conclusion
 
 That's it, I hope this was useful.  Of course, there are lots of configuration
-options to modify your site, so I recommend you read the brief [Nikola
-handbook](https://getnikola.com/handbook.html) to get an overview.  Also, if you
-have ideas on how to improve the setting up of a blog, please comment below.
+options you can modify, so I recommend you read the brief [Nikola
+handbook](https://getnikola.com/handbook.html) to get an overview.  You can also
+take a look at my `conf.py` in
+[GitHub](https://github.com/jluttine/jaakkoluttinen.fi).  And if you have ideas
+on how to improve the setup for a blog, please comment below.
 
 And yes, I know, this blog post isn't a notebook.  But the next one will be and
 in that post I'll share one amazing tool that I just discovered a few days ago
-related to notebook blogging.
+related to sharing notebooks.

@@ -2,7 +2,7 @@
 .. title: How to blog with Jupyter (IPython) Notebook and Nikola
 .. slug: how-to-blog-with-jupyter-ipython-notebook-and-nikola
 .. date: 2015-11-10 22:05:01 UTC+02:00
-.. tags: jupyter,ipython,notebook,nikola,conf.py
+.. tags: Jupyter,IPython,Notebook,Nikola,conf.py
 .. category: 
 .. link: 
 .. description: 

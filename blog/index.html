@@ -35,9 +35,6 @@ article: http://ogp.me/ns/article#
 <!-- /.navbar-header -->
         <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
             <ul class="nav navbar-nav">
-<li>
-<a href="../">Home</a>
-                </li>
 <li class="active">
 <a href=".">Blog</a>
                 </li>
@@ -50,13 +47,7 @@ article: http://ogp.me/ns/article#
                 
             </li>
 </ul>
-<!-- DuckDuckGo custom search --><form method="get" id="search" action="//duckduckgo.com/" class="navbar-form pull-left">
-<input type="hidden" name="sites" value="http://www.jaakkoluttinen.fi/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
-</form>
-<!-- End of custom search -->
-
-
-            <ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!-- /.navbar-collapse -->
     </div>
@@ -67,7 +58,33 @@ article: http://ogp.me/ns/article#
         <div class="row">
             
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="how-to-blog-with-jupyter-ipython-notebook-and-nikola/" class="u-url">How to blog with Jupyter (IPython) Notebook and Nikola</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="sharing-interactive-jupyter-ipython-notebooks-with-binder/" class="u-url">Sharing interactive Jupyter (IPython) Notebooks with Binder</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">Jaakko Luttinen</span></p>
+            <p class="dateline"><a href="sharing-interactive-jupyter-ipython-notebooks-with-binder/" rel="bookmark"><time class="published dt-published" datetime="2015-11-15T12:43:44+02:00" itemprop="datePublished" title="Publication date">2015-11-15 12:43</time></a></p>
+                <p class="commentline">            <a href="sharing-interactive-jupyter-ipython-notebooks-with-binder/#disqus_thread" data-disqus-identifier="cache/posts/sharing-interactive-jupyter-ipython-notebooks-with-binder.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nikola makes sharing Jupyter (IPython) Notebooks easy. You can render a static page like this and provide a link to download the notebook for interactive usage. However, a major downside with this is that the reader must set up his/her own Python environment which has all the dependencies installed and has to know how to run notebooks. It'd be much simpler if the reader could just click a link and an interactive notebook opened in the browser without him/her needing to do anything else. Well, I just discovered a service which easily enables this: <a href="http://mybinder.org">Binder</a>.</p>
+<p class="more"><a href="sharing-interactive-jupyter-ipython-notebooks-with-binder/">Read more…</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="how-to-blog-with-jupyter-ipython-notebook-and-nikola/" class="u-url">How to blog with Jupyter (IPython) Notebook and Nikola</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn">Jaakko Luttinen</span></p>
             <p class="dateline"><a href="how-to-blog-with-jupyter-ipython-notebook-and-nikola/" rel="bookmark"><time class="published dt-published" datetime="2015-11-10T22:05:01+02:00" itemprop="datePublished" title="Publication date">2015-11-10 22:05</time></a></p>
@@ -87,12 +104,13 @@ science, so I've been excited about how <a href="http://jupyter.org/">Jupyter No
 (a.k.a. <a href="http://ipython.org/">IPython Notebooks</a>) can be used to share a mixture
 of reproducible code and commentation.  And with Nikola, it is possible to set
 up a whole blogging system based on posts written as Notebooks making it
-possible for anyone to easily try the analysis shown in the post.  I got some
-inspiration from <a href="http://www.damian.oquanta.info/">Damian Avila's blog</a>.  He has
-written <a href="http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html">instructions on blogging with Nikola and
+possible for anyone to easily try the analysis shown in the post.</p>
+<p>I got some inspiration from <a href="http://www.damian.oquanta.info/">Damian Avila's
+blog</a>.  He has written <a href="http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html">instructions on
+blogging with Nikola and
 IPython</a>.
 However, the instructions are outdated so I thought I'd start my blog by giving
-my own tips on setting up Nikola.</p>
+my own tips on setting up Nikola with Jupyter.</p>
 <p class="more"><a href="how-to-blog-with-jupyter-ipython-notebook-and-nikola/">Read more…</a></p>
 </div>
     </div>
@@ -146,8 +164,8 @@ my own tips on setting up Nikola.</p>
   Contents © 2015  <a href="mailto:jaakko.luttinen@iki.fi">Jaakko Luttinen</a>
   —
   
-<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
-  <img alt="Creative Commons License BY" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+  <img alt="Creative Commons License BY-SA" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
 
   —
   Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>

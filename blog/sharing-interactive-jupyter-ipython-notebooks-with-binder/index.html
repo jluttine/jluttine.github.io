@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharing interactive Jupyter (IPython) Notebooks with Binder | Jaakko Luttinen</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://www.jaakkoluttinen.fi/blog/sharing-interactive-jupyter-ipython-notebooks-with-binder/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<meta name="author" content="Jaakko Luttinen">
+<link rel="prev" href="../how-to-blog-with-jupyter-ipython-notebook-and-nikola/" title="How to blog with Jupyter (IPython) Notebook and Nikola" type="text/html">
+<meta property="og:site_name" content="Jaakko Luttinen">
+<meta property="og:title" content="Sharing interactive Jupyter (IPython) Notebooks with Binder">
+<meta property="og:url" content="http://www.jaakkoluttinen.fi/blog/sharing-interactive-jupyter-ipython-notebooks-with-binder/">
+<meta property="og:description" content="Nikola makes sharing Jupyter (IPython) Notebooks easy. You can render a static page like this and provide a link to download the notebook for interactive usage. However, a major downside with this is ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2015-11-15T12:43:44+02:00">
+<meta property="article:tag" content="Binder">
+<meta property="article:tag" content="conf.py">
+<meta property="article:tag" content="IPython">
+<meta property="article:tag" content="Jupyter">
+<meta property="article:tag" content="Nikola">
+<meta property="article:tag" content="Notebook">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.jaakkoluttinen.fi/">
+
+                <span id="blog-title">Jaakko Luttinen</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../">Blog</a>
+                </li>
+<li>
+<a href="../../archive/">Archive</a>
+                </li>
+<li>
+<a href="../../about/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.ipynb" id="sourcelink">Source</a>
+    </li>
+ 
+        <li>
+        <a href="http://mybinder.org/repo/jluttine/jaakkoluttinen.fi/posts/sharing-interactive-jupyter-ipython-notebooks-with-binder.ipynb">
+        Run Notebook
+        </a>
+        </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Sharing interactive Jupyter (IPython) Notebooks with Binder</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Jaakko Luttinen
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2015-11-15T12:43:44+02:00" itemprop="datePublished" title="2015-11-15 12:43">2015-11-15 12:43</time></a></p>
+                <p class="commentline">            <a href=".#disqus_thread" data-disqus-identifier="cache/posts/sharing-interactive-jupyter-ipython-notebooks-with-binder.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.ipynb" id="sourcelink">Source</a></p>
+ 
+            <p class="sourceline"><a href="../../jluttine/jaakkoluttinen.fi/posts/sharing-interactive-jupyter-ipython-notebooks-with-binder.ipynb">Run Notebook</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nikola makes sharing Jupyter (IPython) Notebooks easy. You can render a static page like this and provide a link to download the notebook for interactive usage. However, a major downside with this is that the reader must set up his/her own Python environment which has all the dependencies installed and has to know how to run notebooks. It'd be much simpler if the reader could just click a link and an interactive notebook opened in the browser without him/her needing to do anything else. Well, I just discovered a service which easily enables this: <a href="http://mybinder.org">Binder</a>.</p>
+<!-- TEASER_END -->
+
+<p>In Binder, you provide your GitHub repository and then anyone can use URL <a href="http://mybinder.org/repo/GITHUB_USERNAME/GITHUB_REPOSITORY">http://mybinder.org/repo/GITHUB_USERNAME/GITHUB_REPOSITORY</a> to access the notebooks in that repository interactively. Anyone going to that URL will get a separate isolated environment, so modifying the notebooks won't mess up anything. You can access specific notebooks by appending the path to a notebook to the URL. Simple.</p>
+<p>This post is a Jupyter Notebook so you can click "Run Notebook" link in the top menu to run it interactively in Binder. To have some Python code for you to play with, here's a few lines of code:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1764</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[1]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>42.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This post gives you instructions on how to add links to Binder into your Nikola powered blog. I assume that you have set up the blogging environment similarly as described in my <a href="how-to-blog-with-jupyter-ipython-notebook-and-nikola">previous post</a>. But first, go to <a href="http://mybinder.org">Binder</a> and build your GitHub repository. I chose <code>requirements.txt</code> do define the dependencies. After building, follow these instructions to add the links to your posts.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Adding-links-to-Binder">Adding links to Binder<a class="anchor-link" href=".#Adding-links-to-Binder">¶</a>
+</h2>
+<p>Assuming you have created a custom theme for your site, you need to overwrite a few parts in your templates. First, create a template directory for your theme if it doesn't exist:</p>
+
+<pre><code>mkdir themes/YOUR_THEME_NAME/templates</code></pre>
+<p>We need to make minor changes to a few template, so we'll copy them and then modify. Copy <code>post.tmpl</code> of <code>bootstrap3-jinja</code> theme and <code>post_header.tmpl</code> of <code>base-jinja</code> theme to your <code>templates</code> directory. These are the files used by <code>ipython</code> theme (which is the parent theme of my custom theme).  You can see and download the full versions of the modified templates in from <a href="https://github.com/jluttine/jaakkoluttinen.fi/tree/master/themes/jaakko/templates/">GitHub</a>.  For clarity, I show here only the lines that have been modified. In <code>post_header.tmpl</code>:</p>
+
+<pre><code>... (to macro html_sourcelink)
+{% if post.compiler.name == "ipynb" %} 
+&lt;p class="sourceline"&gt;&lt;a href="{{ BINDER_URL}}/{{ post.config.GITHUB_REPOSITORY }}/{{ post.source_path }}"&gt;
+Run Notebook
+&lt;/a&gt;&lt;/p&gt;
+{% endif %}
+...</code></pre>
+<p>In <code>post.tmpl</code>:</p>
+
+<pre><code>... (to block content)
+{% if post.compiler.name == "ipynb" %} 
+&lt;br /&gt;
+&lt;p&gt;&lt;em&gt;
+This post is a Jupyter Notebook.
+You can &lt;a href="{{ post.source_link() }}"&gt;download it&lt;/a&gt; or
+&lt;a href="{{ post.config.BINDER_URL }}/{{ post.config.GITHUB_REPOSITORY }}/{{ post.source_path }}"&gt;run it interactively in Binder&lt;/a&gt;.
+&lt;/em&gt;&lt;/p&gt;
+{% endif %}
+
+... (to block sourcelink)
+{% if post.compiler.name == "ipynb" %} 
+&lt;li&gt;
+&lt;a href="{{ post.config.BINDER_URL }}/{{ post.config.GITHUB_REPOSITORY }}/{{ post.source_path }}"&gt;
+  Run Notebook
+&lt;/a&gt;
+&lt;/li&gt;
+{% endif %}
+...</code></pre>
+<p>Also, add the following definitions to <code>conf.py</code>:</p>
+
+<pre><code>GITHUB_REPOSITORY = 'YOUR_GITHUB_USERNAME/REPOSITORY_NAME'
+BINDER_URL = 'http://mybinder.org/repo'</code></pre>
+<p>Obviously, replace <code>YOUR_GITHUB_USERNAME</code> and <code>REPOSITORY_NAME</code> with your username and repository. Now your Jupyter Notebook blog posts have three links to Binder for the reader to run the notebook interactively.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Building-Binder-automatically-when-deploying">Building Binder automatically when deploying<a class="anchor-link" href=".#Building-Binder-automatically-when-deploying">¶</a>
+</h2>
+<p>One downside of Binder is that it doesn't automatically update on GitHub commits. You have to go to <a href="http://mybinder.org/">mybinder.org</a> and manually build the repo again. This is understandable, as they told themselves: "rebuilding on every commit for every binder would put too much strain on our poor build server". Big thanks for the poor servers anyway, they're doing an amazing job.</p>
+<p>I don't want to put too much strain on Binder servers but I would like to automate the rebuilding process somehow. So I wrote a simple script which posts a build request to Binder:</p>
+
+<pre><code>#!/bin/env python
+
+# Automatic form submisson to http://mybinder.org/
+
+import requests
+
+# Add the directory of conf.py into the Python path
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
+from conf import GITHUB_REPOSITORY
+from conf import BINDER_API_URL
+
+submission = {
+    "dependencies": ["requirements.txt"],
+    "services": [],
+}
+
+baseurl = 'api.mybinder.org'
+url = BINDER_API_URL + '/apps/' + GITHUB_REPOSITORY
+
+r = requests.post(url, json=submission)
+print(r)</code></pre>
+<p>I named the script <code>bin/deploy_binder</code> (create <code>bin</code> directory first) and made it executable:</p>
+
+<pre><code>chmod +x bin/deploy_binder</code></pre>
+<p>In order to have <code>bin</code> directory in your path when in your virtual environment, you can add the following lines to <code>$VIRTUAL_ENV/bin/postactivate</code>:</p>
+
+<pre><code>PROJECT_DIR=`cat $VIRTUAL_ENV/.project`
+export PATH=$PROJECT_DIR/bin:$PATH</code></pre>
+<p>Now you should have <code>deploy_binder</code> command available after activating your virtual environment with <code>workon blog</code>. In order for the script to work, you need to define the following variable in <code>conf.py</code>:</p>
+
+<pre><code>BINDER_API_URL = 'http://api.mybinder.org'</code></pre>
+<p>With this setup, you should run <code>deploy_binder</code> after you have run <code>nikola github_deploy</code> which pushes changes in your Jupyter Notebooks to GitHub. But don't rebuild Binder if not necessary (e.g., no changes in notebooks) in order to avoid putting too much workload on Binder.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href=".#Conclusion">¶</a>
+</h2>
+<p>If you have ideas on how to improve this setting, please comment below. Also, note that Binder is open-source software, so you can get the <a href="https://github.com/binder-project/binder">source code</a> and run your own Binder server!</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+ 
+    <br><p><em>
+    This post is a Jupyter Notebook.
+    You can <a href="index.ipynb">download it</a> or
+    <a href="http://mybinder.org/repo/jluttine/jaakkoluttinen.fi/posts/sharing-interactive-jupyter-ipython-notebooks-with-binder.ipynb">run it interactively in Binder</a>.
+    </em></p>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/binder/" rel="tag">Binder</a></li>
+            <li><a class="tag p-category" href="../../categories/confpy/" rel="tag">conf.py</a></li>
+            <li><a class="tag p-category" href="../../categories/ipython/" rel="tag">IPython</a></li>
+            <li><a class="tag p-category" href="../../categories/jupyter/" rel="tag">Jupyter</a></li>
+            <li><a class="tag p-category" href="../../categories/nikola/" rel="tag">Nikola</a></li>
+            <li><a class="tag p-category" href="../../categories/notebook/" rel="tag">Notebook</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../how-to-blog-with-jupyter-ipython-notebook-and-nikola/" rel="prev" title="How to blog with Jupyter (IPython) Notebook and Nikola">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="jaakkoluttinen",
+            disqus_url="http://www.jaakkoluttinen.fi/blog/sharing-interactive-jupyter-ipython-notebooks-with-binder/",
+        disqus_title="Sharing interactive Jupyter (IPython) Notebooks with Binder",
+        disqus_identifier="cache/posts/sharing-interactive-jupyter-ipython-notebooks-with-binder.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section><script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+            </script></article><script>var disqus_shortname="jaakkoluttinen";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer"><div class="text-center">
+<p>
+
+<span class="fa-stack fa-2x">
+  <a href="../../rss.xml">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://twitter.com/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-twitter fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://github.com/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-github fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://www.linkedin.com/in/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-linkedin fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="mailto:jaakko.luttinen@iki.fi">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+</p>
+<p>
+  Contents © 2015  <a href="mailto:jaakko.luttinen@iki.fi">Jaakko Luttinen</a>
+  —
+  
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+  <img alt="Creative Commons License BY-SA" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
+
+  —
+  Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
+</p>
+</div>
+  
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

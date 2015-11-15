@@ -12,6 +12,7 @@ article: http://ogp.me/ns/article#
 <link rel="canonical" href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <meta name="author" content="Jaakko Luttinen">
+<link rel="next" href="../sharing-interactive-jupyter-ipython-notebooks-with-binder/" title="Sharing interactive Jupyter (IPython) Notebooks with Binder" type="text/html">
 <meta property="og:site_name" content="Jaakko Luttinen">
 <meta property="og:title" content="How to blog with Jupyter (IPython) Notebook and Nikola">
 <meta property="og:url" content="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/">
@@ -21,10 +22,10 @@ excited that I finally had to start my blog.  I ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2015-11-10T22:05:01+02:00">
 <meta property="article:tag" content="conf.py">
-<meta property="article:tag" content="ipython">
-<meta property="article:tag" content="jupyter">
-<meta property="article:tag" content="nikola">
-<meta property="article:tag" content="notebook">
+<meta property="article:tag" content="IPython">
+<meta property="article:tag" content="Jupyter">
+<meta property="article:tag" content="Nikola">
+<meta property="article:tag" content="Notebook">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -49,9 +50,6 @@ excited that I finally had to start my blog.  I ">
         <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
             <ul class="nav navbar-nav">
 <li>
-<a href="../../">Home</a>
-                </li>
-<li>
 <a href="../">Blog</a>
                 </li>
 <li>
@@ -63,13 +61,7 @@ excited that I finally had to start my blog.  I ">
                 
             </li>
 </ul>
-<!-- DuckDuckGo custom search --><form method="get" id="search" action="//duckduckgo.com/" class="navbar-form pull-left">
-<input type="hidden" name="sites" value="http://www.jaakkoluttinen.fi/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
-</form>
-<!-- End of custom search -->
-
-
-            <ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav navbar-right">
 <li>
     <a href="index.md" id="sourcelink">Source</a>
     </li>
@@ -110,12 +102,13 @@ science, so I've been excited about how <a href="http://jupyter.org/">Jupyter No
 (a.k.a. <a href="http://ipython.org/">IPython Notebooks</a>) can be used to share a mixture
 of reproducible code and commentation.  And with Nikola, it is possible to set
 up a whole blogging system based on posts written as Notebooks making it
-possible for anyone to easily try the analysis shown in the post.  I got some
-inspiration from <a href="http://www.damian.oquanta.info/">Damian Avila's blog</a>.  He has
-written <a href="http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html">instructions on blogging with Nikola and
+possible for anyone to easily try the analysis shown in the post.</p>
+<p>I got some inspiration from <a href="http://www.damian.oquanta.info/">Damian Avila's
+blog</a>.  He has written <a href="http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html">instructions on
+blogging with Nikola and
 IPython</a>.
 However, the instructions are outdated so I thought I'd start my blog by giving
-my own tips on setting up Nikola.</p>
+my own tips on setting up Nikola with Jupyter.</p>
 <!-- TEASER_END -->
 
 <h2>Set up the environment</h2>
@@ -379,23 +372,26 @@ month based hierarchy, use the following setting:</p>
 Markdown.</p>
 <h2>Conclusion</h2>
 <p>That's it, I hope this was useful.  Of course, there are lots of configuration
-options you can modify, so I recommend you read the brief <a href="https://getnikola.com/handbook.html">Nikola
-handbook</a> to get an overview.  You can also
-take a look at my <code>conf.py</code> in
-<a href="https://github.com/jluttine/jaakkoluttinen.fi">GitHub</a>.  And if you have ideas
-on how to improve the setup for a blog, please comment below.</p>
+options to modify your site, so I recommend you read the brief <a href="https://getnikola.com/handbook.html">Nikola
+handbook</a> to get an overview.  Also, if you
+have ideas on how to improve the setting up of a blog, please comment below.</p>
 <p>And yes, I know, this blog post isn't a notebook.  But the next one will be and
 in that post I'll share one amazing tool that I just discovered a few days ago
-related to sharing notebooks.</p>
+related to notebook blogging.</p>
 </div>
     </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
 <li><a class="tag p-category" href="../../categories/confpy/" rel="tag">conf.py</a></li>
-            <li><a class="tag p-category" href="../../categories/ipython/" rel="tag">ipython</a></li>
-            <li><a class="tag p-category" href="../../categories/jupyter/" rel="tag">jupyter</a></li>
-            <li><a class="tag p-category" href="../../categories/nikola/" rel="tag">nikola</a></li>
-            <li><a class="tag p-category" href="../../categories/notebook/" rel="tag">notebook</a></li>
-        </ul></nav></aside><section class="comments"><h2>Comments</h2>
+            <li><a class="tag p-category" href="../../categories/ipython/" rel="tag">IPython</a></li>
+            <li><a class="tag p-category" href="../../categories/jupyter/" rel="tag">Jupyter</a></li>
+            <li><a class="tag p-category" href="../../categories/nikola/" rel="tag">Nikola</a></li>
+            <li><a class="tag p-category" href="../../categories/notebook/" rel="tag">Notebook</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="next">
+                <a href="../sharing-interactive-jupyter-ipython-notebooks-with-binder/" rel="next" title="Sharing interactive Jupyter (IPython) Notebooks with Binder">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
                         <div id="disqus_thread"></div>
         <script>
         var disqus_shortname ="jaakkoluttinen",
@@ -462,8 +458,8 @@ related to sharing notebooks.</p>
   Contents © 2015  <a href="mailto:jaakko.luttinen@iki.fi">Jaakko Luttinen</a>
   —
   
-<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
-  <img alt="Creative Commons License BY" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+  <img alt="Creative Commons License BY-SA" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>
 
   —
   Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>

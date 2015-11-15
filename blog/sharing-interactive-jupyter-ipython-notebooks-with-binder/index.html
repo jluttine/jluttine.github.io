@@ -240,17 +240,17 @@ url = BINDER_API_URL + '/apps/' + GITHUB_REPOSITORY
 
 r = requests.post(url, json=submission)
 print(r)</code></pre>
-<p>I named the script <code>bin/deploy_binder</code> (create <code>bin</code> directory first) and made it executable:</p>
+<p>I named the script <code>bin/binder_deploy</code> (create <code>bin</code> directory first) and made it executable:</p>
 
-<pre><code>chmod +x bin/deploy_binder</code></pre>
+<pre><code>chmod +x bin/binder_deploy</code></pre>
 <p>In order to have <code>bin</code> directory in your path when in your virtual environment, you can add the following lines to <code>$VIRTUAL_ENV/bin/postactivate</code>:</p>
 
 <pre><code>PROJECT_DIR=`cat $VIRTUAL_ENV/.project`
 export PATH=$PROJECT_DIR/bin:$PATH</code></pre>
-<p>Now you should have <code>deploy_binder</code> command available after activating your virtual environment with <code>workon blog</code>. In order for the script to work, you need to define the following variable in <code>conf.py</code>:</p>
+<p>Now you should have <code>binder_deploy</code> command available after activating your virtual environment with <code>workon blog</code>. In order for the script to work, you need to define the following variable in <code>conf.py</code>:</p>
 
 <pre><code>BINDER_API_URL = 'http://api.mybinder.org'</code></pre>
-<p>With this setup, you should run <code>deploy_binder</code> after you have run <code>nikola github_deploy</code> which pushes changes in your Jupyter Notebooks to GitHub. But don't rebuild Binder if not necessary (e.g., no changes in notebooks) in order to avoid putting too much workload on Binder.</p>
+<p>With this setup, you should run <code>binder_deploy</code> after you have run <code>nikola github_deploy</code> and <code>git push</code> which pushes changes in your Jupyter Notebooks to GitHub. But don't rebuild Binder if not necessary (e.g., no changes in notebooks) in order to avoid putting too much workload on Binder.</p>
 
 </div>
 </div>

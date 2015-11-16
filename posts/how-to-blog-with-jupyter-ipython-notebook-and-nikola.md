@@ -10,6 +10,8 @@
 .. type: text
 -->
 
+*Last updated on 2015-11-16*
+
 I have thought about starting a blog for a few years now and when I recently
 found some amazing tools which can be used in a data science blog I got so
 excited that I finally had to start my blog.  I have used Python and the

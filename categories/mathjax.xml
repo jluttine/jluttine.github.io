@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Jaakko Luttinen (mathjax)</title><link>http://www.jaakkoluttinen.fi/</link><description></description><atom:link type="application/rss+xml" rel="self" href="http://www.jaakkoluttinen.fi/categories/mathjax.xml"></atom:link><language>en</language><lastBuildDate>Mon, 16 Nov 2015 18:53:25 GMT</lastBuildDate><generator>https://getnikola.com/</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>How to blog with Jupyter (IPython) Notebook and Nikola</title><link>http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/</link><dc:creator>Jaakko Luttinen</dc:creator><description>&lt;div&gt;&lt;p&gt;I have thought about starting a blog for a few years now and when I recently
+found some amazing tools which can be used in a data science blog I got so
+excited that I finally had to start my blog.  I have used Python and the
+&lt;a href="http://www.numpy.org/"&gt;NumPy&lt;/a&gt;/&lt;a href="http://scipy.org/"&gt;SciPy&lt;/a&gt; stack to analyze and
+model data for a few years now.  I'm also passionate about open data and open
+science, so I've been excited about how &lt;a href="http://jupyter.org/"&gt;Jupyter Notebooks&lt;/a&gt;
+(a.k.a. &lt;a href="http://ipython.org/"&gt;IPython Notebooks&lt;/a&gt;) can be used to share a mixture
+of reproducible code and commentation.  And with Nikola, it is possible to set
+up a whole blogging system based on posts written as Notebooks making it
+possible for anyone to easily try the analysis shown in the post.  I got some
+inspiration from &lt;a href="http://www.damian.oquanta.info/"&gt;Damian Avila's blog&lt;/a&gt;.  He has
+written &lt;a href="http://www.damian.oquanta.info/posts/blogging-with-nikola-and-ipython.html"&gt;instructions on blogging with Nikola and
+IPython&lt;/a&gt;.
+However, the instructions are outdated so I thought I'd start my blog by giving
+my own tips on setting up Nikola.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/"&gt;Read more…&lt;/a&gt; (6 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>conf.py</category><category>IPython</category><category>Jupyter</category><category>mathjax</category><category>Nikola</category><category>Notebook</category><guid>http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/</guid><pubDate>Tue, 10 Nov 2015 20:05:01 GMT</pubDate></item></channel></rss>

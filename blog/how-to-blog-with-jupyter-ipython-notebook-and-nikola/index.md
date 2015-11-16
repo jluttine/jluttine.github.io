@@ -2,7 +2,8 @@
 .. title: How to blog with Jupyter (IPython) Notebook and Nikola
 .. slug: how-to-blog-with-jupyter-ipython-notebook-and-nikola
 .. date: 2015-11-10 22:05:01 UTC+02:00
-.. tags: Jupyter,IPython,Notebook,Nikola,conf.py
+.. updated: 2015-11-16 20:01:10 UTC+02:00
+.. tags: Jupyter,IPython,Notebook,Nikola,conf.py,mathjax
 .. category: 
 .. link: 
 .. description: 
@@ -158,13 +159,13 @@ used in your Nikola project.  After choosing the Bootswatch theme, create your
 custom theme:
 
 ```
-nikola install_theme ipython
-nikola bootswatch_theme -n YOUR_THEME_NAME -s BOOTSWATCH_THEME_NAME -p ipython
+nikola bootswatch_theme -n YOUR_THEME_NAME -s BOOTSWATCH_THEME_NAME -p bootstrap3-jinja
 ```
 
-I recommend using IPython theme as the parent theme but you can choose any other
-[Nikola theme](https://themes.getnikola.com/). Now modify your `conf.py` to use
-the new custom theme:
+I recommend using `bootstrap3-jinja` theme as the parent theme but you can
+choose any other [Nikola theme](https://themes.getnikola.com/).  But don't use
+`ipython` theme, that's not supported (thanks to Chris Warrick for pointing this
+out).  Now modify your `conf.py` to use the new custom theme:
 
     THEME = "YOUR_THEME_NAME"
 
@@ -232,24 +233,38 @@ Just remember to change the usernames in each of the social media links.
 
 ## Write math
 
-You can write math in your blog either inline as `\\( X \sim \mathcal{N}(0,1)
-\\)` which looks like \\( X \sim \mathcal{N}(0,1) \\) or in display mode as
+You can write math in your blog either inline as `\\( X \sim N(\mu, \sigma) \\)`
+which looks like \\( X \sim N(\mu, \sigma) \\) or in display mode as
 
 ```
-$$
-\mathcal{N}(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
-$$
+\\[
+N(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\\]
 ```
 
 which looks like
 
-$$
-\mathcal{N}(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
-$$
+\\[
+N(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\\]
 
 By default, [MathJax](https://www.mathjax.org/) is used but there is also
 support for a very promising fast math renderer called
-[KaTeX](http://khan.github.io/KaTeX/).  However, I wasn't able to enable KaTeX.
+[KaTeX](http://khan.github.io/KaTeX/).  In order to use KaTeX, use the following
+settings:
+
+```
+EXTRA_HEAD_DATA = """
+... (possibly other links here too, for instance, Font Awesome) ...
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+"""
+USE_KATEX = True
+```
+
+If math doesn't render correctly (or at all) with KaTeX, you might be using some
+LaTeX commands that KaTeX doesn't (yet) support.  Also, note that you need to
+add `mathjax` tag to your post to get the math rendered - even if you're using
+KaTeX.
 
 
 ## Add a license

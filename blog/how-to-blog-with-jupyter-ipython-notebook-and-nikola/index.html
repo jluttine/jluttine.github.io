@@ -5,12 +5,17 @@ article: http://ogp.me/ns/article#
 " lang="en">
 <head>
 <meta charset="utf-8">
+<base href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to blog with Jupyter (IPython) Notebook and Nikola | Jaakko Luttinen</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
 <meta name="author" content="Jaakko Luttinen">
 <link rel="next" href="../sharing-interactive-jupyter-ipython-notebooks-with-binder/" title="Sharing interactive Jupyter (IPython) Notebooks with Binder" type="text/html">
 <meta property="og:site_name" content="Jaakko Luttinen">
@@ -24,6 +29,7 @@ excited that I finally had to start my blog.  I ">
 <meta property="article:tag" content="conf.py">
 <meta property="article:tag" content="IPython">
 <meta property="article:tag" content="Jupyter">
+<meta property="article:tag" content="mathjax">
 <meta property="article:tag" content="Nikola">
 <meta property="article:tag" content="Notebook">
 </head>
@@ -236,14 +242,14 @@ ideas on how to improve the settings.</p>
 <a href="https://bootswatch.com/">Bootswatch</a> offers free themes which can be easily
 used in your Nikola project.  After choosing the Bootswatch theme, create your
 custom theme:</p>
-<pre class="code literal-block">nikola install_theme ipython
-nikola bootswatch_theme -n YOUR_THEME_NAME -s BOOTSWATCH_THEME_NAME -p ipython
+<pre class="code literal-block">nikola bootswatch_theme -n YOUR_THEME_NAME -s BOOTSWATCH_THEME_NAME -p bootstrap3-jinja
 </pre>
 
 
-<p>I recommend using IPython theme as the parent theme but you can choose any other
-<a href="https://themes.getnikola.com/">Nikola theme</a>. Now modify your <code>conf.py</code> to use
-the new custom theme:</p>
+<p>I recommend using <code>bootstrap3-jinja</code> theme as the parent theme but you can
+choose any other <a href="https://themes.getnikola.com/">Nikola theme</a>.  But don't use
+<code>ipython</code> theme, that's not supported (thanks to Chris Warrick for pointing this
+out).  Now modify your <code>conf.py</code> to use the new custom theme:</p>
 <pre class="code literal-block">THEME = "YOUR_THEME_NAME"
 </pre>
 
@@ -306,21 +312,34 @@ by adding the following lines to <code>conf.py</code>:</p>
 
 <p>Just remember to change the usernames in each of the social media links.</p>
 <h3>Write math</h3>
-<p>You can write math in your blog either inline as <code>\\( X \sim \mathcal{N}(0,1)
-\\)</code> which looks like \( X \sim \mathcal{N}(0,1) \) or in display mode as</p>
-<pre class="code literal-block">$$
-\mathcal{N}(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
-$$
+<p>You can write math in your blog either inline as <code>\\( X \sim N(\mu, \sigma) \\)</code>
+which looks like \( X \sim N(\mu, \sigma) \) or in display mode as</p>
+<pre class="code literal-block">\\[
+N(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\\]
 </pre>
 
 
 <p>which looks like</p>
-<p>$$
-\mathcal{N}(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
-$$</p>
+<p>\[
+N(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]</p>
 <p>By default, <a href="https://www.mathjax.org/">MathJax</a> is used but there is also
 support for a very promising fast math renderer called
-<a href="http://khan.github.io/KaTeX/">KaTeX</a>.  However, I wasn't able to enable KaTeX.</p>
+<a href="http://khan.github.io/KaTeX/">KaTeX</a>.  In order to use KaTeX, use the following
+settings:</p>
+<pre class="code literal-block">EXTRA_HEAD_DATA = """
+... (possibly other links here too, for instance, Font Awesome) ...
+&lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"&gt;
+"""
+USE_KATEX = True
+</pre>
+
+
+<p>If math doesn't render correctly (or at all) with KaTeX, you might be using some
+LaTeX commands that KaTeX doesn't (yet) support.  Also, note that you need to
+add <code>mathjax</code> tag to your post to get the math rendered - even if you're using
+KaTeX.</p>
 <h3>Add a license</h3>
 <p>You can also add a license for your content:</p>
 <pre class="code literal-block">LICENSE = """
@@ -412,7 +431,9 @@ related to sharing notebooks.</p>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section></article><script>var disqus_shortname="jaakkoluttinen";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+        </section><script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/contrib/auto-render.min.js"></script><script>
+                renderMathInElement(document.body);
+            </script></article><script>var disqus_shortname="jaakkoluttinen";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
 </div>
         <!--End of body content-->
 

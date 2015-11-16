@@ -5,12 +5,17 @@ article: http://ogp.me/ns/article#
 " lang="en">
 <head>
 <meta charset="utf-8">
+<base href="http://www.jaakkoluttinen.fi/blog/sharing-interactive-jupyter-ipython-notebooks-with-binder/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sharing interactive Jupyter (IPython) Notebooks with Binder | Jaakko Luttinen</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta content="#5670d4" name="theme-color">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://www.jaakkoluttinen.fi/blog/sharing-interactive-jupyter-ipython-notebooks-with-binder/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
 <meta name="author" content="Jaakko Luttinen">
 <link rel="prev" href="../how-to-blog-with-jupyter-ipython-notebook-and-nikola/" title="How to blog with Jupyter (IPython) Notebook and Nikola" type="text/html">
 <meta property="og:site_name" content="Jaakko Luttinen">
@@ -167,7 +172,7 @@ article: http://ogp.me/ns/article#
 <p>Assuming you have created a custom theme for your site, you need to overwrite a few parts in your templates. First, create a template directory for your theme if it doesn't exist:</p>
 
 <pre><code>mkdir themes/YOUR_THEME_NAME/templates</code></pre>
-<p>We need to make minor changes to a few template, so we'll copy them and then modify. Copy <code>post.tmpl</code> of <code>bootstrap3-jinja</code> theme and <code>post_header.tmpl</code> of <code>base-jinja</code> theme to your <code>templates</code> directory. These are the files used by <code>ipython</code> theme (which is the parent theme of my custom theme).  You can see and download the full versions of the modified templates from <a href="https://github.com/jluttine/jaakkoluttinen.fi/tree/master/themes/jaakko/templates/">GitHub</a>.  For clarity, I show here only the lines that have been modified. In <code>post_header.tmpl</code>:</p>
+<p>We need to make minor changes to a few template, so we'll copy them and then modify. Copy <code>post.tmpl</code> of <code>bootstrap3-jinja</code> theme and <code>post_header.tmpl</code> of <code>base-jinja</code> theme to your <code>templates</code> directory. These are the files used by <code>bootstrap3-jinja</code> theme (which is the parent theme of my custom theme).  You can see and download the full versions of the modified templates from <a href="https://github.com/jluttine/jaakkoluttinen.fi/tree/master/themes/jaakko/templates/">GitHub</a>.  For clarity, I show here only the lines that have been modified. In <code>post_header.tmpl</code>:</p>
 
 <pre><code>... (to macro html_sourcelink)
 {% if post.compiler.name == "ipynb" %} 
@@ -309,8 +314,8 @@ export PATH=$PROJECT_DIR/bin:$PATH</code></pre>
     <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section><script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
-            MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </section><script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/contrib/auto-render.min.js"></script><script>
+                renderMathInElement(document.body);
             </script></article><script>var disqus_shortname="jaakkoluttinen";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
 </div>
         <!--End of body content-->

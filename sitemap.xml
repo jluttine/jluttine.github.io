@@ -7,58 +7,58 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://www.jaakkoluttinen.fi/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/about/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/archive/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/blog/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/blog/sharing-interactive-jupyter-ipython-notebooks-with-binder/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/binder/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/confpy/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/ipython/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/jupyter/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/mathjax/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/nikola/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/notebook/</loc>
-  <lastmod>2015-11-16T07:24:00Z</lastmod>
+  <lastmod>2015-11-16T16:28:00Z</lastmod>
  </url>
 </urlset>

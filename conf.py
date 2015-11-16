@@ -139,7 +139,7 @@ NAVIGATION_LINKS = {
 # Name of the theme to use.
 #THEME = "bootstrap3"
 #THEME = "ipython"
-THEME = "jaakko"
+THEME = "jaakkoluttinen"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
@@ -969,9 +969,9 @@ PRETTY_URLS = True
 # like this:
 EXTRA_HEAD_DATA = """
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
 """
-# <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
-# USE_KATEX = True
+USE_KATEX = True
 
 # Do you want to customize the nbconversion of your IPython notebook?
 # IPYNB_CONFIG = {}

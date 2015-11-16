@@ -167,7 +167,7 @@ article: http://ogp.me/ns/article#
 <p>Assuming you have created a custom theme for your site, you need to overwrite a few parts in your templates. First, create a template directory for your theme if it doesn't exist:</p>
 
 <pre><code>mkdir themes/YOUR_THEME_NAME/templates</code></pre>
-<p>We need to make minor changes to a few template, so we'll copy them and then modify. Copy <code>post.tmpl</code> of <code>bootstrap3-jinja</code> theme and <code>post_header.tmpl</code> of <code>base-jinja</code> theme to your <code>templates</code> directory. These are the files used by <code>ipython</code> theme (which is the parent theme of my custom theme).  You can see and download the full versions of the modified templates in from <a href="https://github.com/jluttine/jaakkoluttinen.fi/tree/master/themes/jaakko/templates/">GitHub</a>.  For clarity, I show here only the lines that have been modified. In <code>post_header.tmpl</code>:</p>
+<p>We need to make minor changes to a few template, so we'll copy them and then modify. Copy <code>post.tmpl</code> of <code>bootstrap3-jinja</code> theme and <code>post_header.tmpl</code> of <code>base-jinja</code> theme to your <code>templates</code> directory. These are the files used by <code>ipython</code> theme (which is the parent theme of my custom theme).  You can see and download the full versions of the modified templates from <a href="https://github.com/jluttine/jaakkoluttinen.fi/tree/master/themes/jaakko/templates/">GitHub</a>.  For clarity, I show here only the lines that have been modified. In <code>post_header.tmpl</code>:</p>
 
 <pre><code>... (to macro html_sourcelink)
 {% if post.compiler.name == "ipynb" %} 

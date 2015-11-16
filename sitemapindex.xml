@@ -7,34 +7,38 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>http://www.jaakkoluttinen.fi/categories/binder.xml</loc>
-  <lastmod>2015-11-15T10:47:00Z</lastmod>
+  <lastmod>2015-11-16T07:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://www.jaakkoluttinen.fi/categories/confpy.xml</loc>
-  <lastmod>2015-11-15T10:47:00Z</lastmod>
+  <lastmod>2015-11-16T07:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://www.jaakkoluttinen.fi/categories/ipython.xml</loc>
-  <lastmod>2015-11-15T10:47:00Z</lastmod>
+  <lastmod>2015-11-16T07:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://www.jaakkoluttinen.fi/categories/jupyter.xml</loc>
-  <lastmod>2015-11-15T10:47:00Z</lastmod>
+  <lastmod>2015-11-16T07:24:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>http://www.jaakkoluttinen.fi/categories/mathjax.xml</loc>
+  <lastmod>2015-11-16T07:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://www.jaakkoluttinen.fi/categories/nikola.xml</loc>
-  <lastmod>2015-11-15T10:47:00Z</lastmod>
+  <lastmod>2015-11-16T07:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://www.jaakkoluttinen.fi/categories/notebook.xml</loc>
-  <lastmod>2015-11-15T10:47:00Z</lastmod>
+  <lastmod>2015-11-16T07:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://www.jaakkoluttinen.fi/rss.xml</loc>
-  <lastmod>2015-11-15T10:47:00Z</lastmod>
+  <lastmod>2015-11-16T07:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>http://www.jaakkoluttinen.fi/sitemap.xml</loc>
-  <lastmod>2015-11-15T11:35:00Z</lastmod>
+  <lastmod>2015-11-16T07:24:00Z</lastmod>
  </sitemap>
 </sitemapindex>

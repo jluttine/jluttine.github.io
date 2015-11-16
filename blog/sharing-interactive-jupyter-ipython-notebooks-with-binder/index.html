@@ -219,7 +219,7 @@ BINDER_URL = 'http://mybinder.org/repo'</code></pre>
 <h2 id="Building-Binder-automatically-when-deploying">Building Binder automatically when deploying<a class="anchor-link" href=".#Building-Binder-automatically-when-deploying">¶</a>
 </h2>
 <p>One downside of Binder is that it doesn't automatically update on GitHub commits. You have to go to <a href="http://mybinder.org/">mybinder.org</a> and manually build the repo again. This is understandable, as they told themselves: "rebuilding on every commit for every binder would put too much strain on our poor build server". Big thanks for the poor servers anyway, they're doing an amazing job.</p>
-<p>I don't want to put too much strain on Binder servers but I would like to automate the rebuilding process somehow. So I wrote a simple script which posts a build request to Binder:</p>
+<p>I don't want to put too much strain on Binder servers but I would like to automate the rebuilding process somehow. So I wrote a simple script which posts a build request to Binder (thanks to Paavo Leinonen for helpful comments):</p>
 
 <pre><code>#!/bin/env python
 

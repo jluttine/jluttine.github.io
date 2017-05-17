@@ -3,3 +3,5 @@ scipy
 matplotlib
 h5py
 bayespy
+nikola
+bokeh

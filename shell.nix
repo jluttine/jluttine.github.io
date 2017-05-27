@@ -8,6 +8,6 @@ let
 in {
   blogEnv = stdenv.mkDerivation {
     name = "blog";
-    buildInputs = with pythonPackages; [ Nikola python jupyter ws4py watchdog webassets ];
+    buildInputs = with pythonPackages; [ Nikola python jupyter ws4py watchdog webassets ghp-import  ];
   };
 }

@@ -26,15 +26,7 @@
   <lastmod>2017-05-17T20:17:00Z</lastmod>
  </url>
  <url>
-  <loc>http://www.jaakkoluttinen.fi/blog/d3py-interactive-visualization-with-d3js-in-python/</loc>
-  <lastmod>2017-05-05T03:47:00Z</lastmod>
- </url>
- <url>
   <loc>http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/</loc>
-  <lastmod>2017-05-05T03:47:00Z</lastmod>
- </url>
- <url>
-  <loc>http://www.jaakkoluttinen.fi/blog/interactive-visualizations-in-nikola-with-bokeh/</loc>
   <lastmod>2017-05-05T03:47:00Z</lastmod>
  </url>
  <url>
@@ -43,7 +35,7 @@
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/</loc>
-  <lastmod>2017-05-27T13:37:00Z</lastmod>
+  <lastmod>2017-05-27T13:58:00Z</lastmod>
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/binder/</loc>
@@ -55,10 +47,6 @@
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/confpy/</loc>
-  <lastmod>2017-05-05T03:47:00Z</lastmod>
- </url>
- <url>
-  <loc>http://www.jaakkoluttinen.fi/categories/d3/</loc>
   <lastmod>2017-05-05T03:47:00Z</lastmod>
  </url>
  <url>
@@ -83,10 +71,6 @@
  </url>
  <url>
   <loc>http://www.jaakkoluttinen.fi/categories/notebook/</loc>
-  <lastmod>2017-05-05T03:47:00Z</lastmod>
- </url>
- <url>
-  <loc>http://www.jaakkoluttinen.fi/categories/visualization/</loc>
   <lastmod>2017-05-05T03:47:00Z</lastmod>
  </url>
 </urlset>

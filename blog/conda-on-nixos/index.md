@@ -29,25 +29,6 @@ by adding the selected binaries to the search path. Thus, it is possible to have
 different versions of packages in Nix store and use different sets of packages
 in different environments.
 
-<!-- Conda (also known as Anaconda or Miniconda) is a popular cross-platform binary -->
-<!-- package manager. It is mainly targeted to Python users making it easy to create -->
-<!-- environments with specific versions of packages (or even Python itself). It is -->
-<!-- similar to what can be achieved with pip and virtualenv but one doesn't need to -->
-<!-- worry about compiling complex packages such as NumPy from source as Conda -->
-<!-- distributes them as binaries with all the necessary non-Python library -->
-<!-- dependencies. With Conda, it is extremely easy to create identical environments -->
-<!-- in very different systems, for instance, a recent Ubuntu version, an old Ubuntu -->
-<!-- version and even Windows. Thus, it is no wonder that Conda has become such a -->
-<!-- popular tool. -->
-
-
-<!-- However, using third party binaries is problematic because they e -->
-
-
-<!-- perhaps, here the problems with third party binaries. then conda. -->
-
-
-
 
 However, using third-party binaries such as Conda on NixOS turns out to be
 non-trivial because the binaries expect to find the dynamic linker in
@@ -127,11 +108,15 @@ in
 
         conda
 
-        # Missing libraries for IPython. I found these using:
+        # Add here libraries that Conda packages require but aren't provided by
+        # Conda because it assumes that the system has them.
+        #
+        # For instance, for IPython, these can be found using:
         # `LD_DEBUG=libs ipython --pylab`
         xorg.libSM
         xorg.libICE
         xorg.libXrender
+        libselinux
 
         # Just in case one installs a package with pip instead of conda and pip
         # needs to compile some C sources
@@ -149,6 +134,9 @@ in
       # Paths for gcc if compiling some C sources with pip
       export NIX_CFLAGS_COMPILE="-I${installationPath}/include"
       export NIX_CFLAGS_LINK="-L${installationPath}lib"
+      # Some other required environment variables
+      export FONTCONFIG_FILE=/etc/fonts/fonts.conf
+      export QTCOMPOSE=${pkgs.xorg.libX11}/share/X11/locale
     '';
   }
 ).env
@@ -192,6 +180,9 @@ As I'm new to NixOS, there must be many possible improvements to this solution.
 I'd be glad to hear about any such ideas. I'd be interested to know if this
 could be modified for inclusion in `nixpkgs`, thus making Conda easily
 accessible to all NixOS users.
+
+*Updated 2017-05-27: Added some libraries and environment variables to the
+configuration in order to support Spyder.*
 
 [^1]: Anaconda is a comprehensive Conda installer containing Python, Conda and a
     large number of other packages.

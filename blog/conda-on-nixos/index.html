@@ -114,30 +114,6 @@ are kept in a separate directory called Nix store and environments are created
 by adding the selected binaries to the search path. Thus, it is possible to have
 different versions of packages in Nix store and use different sets of packages
 in different environments.</p>
-<!-- Conda (also known as Anaconda or Miniconda) is a popular cross-platform binary -->
-
-<!-- package manager. It is mainly targeted to Python users making it easy to create -->
-
-<!-- environments with specific versions of packages (or even Python itself). It is -->
-
-<!-- similar to what can be achieved with pip and virtualenv but one doesn't need to -->
-
-<!-- worry about compiling complex packages such as NumPy from source as Conda -->
-
-<!-- distributes them as binaries with all the necessary non-Python library -->
-
-<!-- dependencies. With Conda, it is extremely easy to create identical environments -->
-
-<!-- in very different systems, for instance, a recent Ubuntu version, an old Ubuntu -->
-
-<!-- version and even Windows. Thus, it is no wonder that Conda has become such a -->
-
-<!-- popular tool. -->
-
-<!-- However, using third party binaries is problematic because they e -->
-
-<!-- perhaps, here the problems with third party binaries. then conda. -->
-
 <p>However, using third-party binaries such as Conda on NixOS turns out to be
 non-trivial because the binaries expect to find the dynamic linker in
 <code>/lib64/ld-linux-x86-64.so.2</code>, which doesn't exist on NixOS. It is relatively
@@ -212,11 +188,15 @@ Conda in <code>~/.conda-shell.nix</code>:</p>
 
         conda
 
-        <span class="c1"># Missing libraries for IPython. I found these using:</span>
+        <span class="c1"># Add here libraries that Conda packages require but aren't provided by</span>
+        <span class="c1"># Conda because it assumes that the system has them.</span>
+        <span class="c1">#</span>
+        <span class="c1"># For instance, for IPython, these can be found using:</span>
         <span class="c1"># `LD_DEBUG=libs ipython --pylab`</span>
         xorg<span class="o">.</span>libSM
         xorg<span class="o">.</span>libICE
         xorg<span class="o">.</span>libXrender
+        libselinux
 
         <span class="c1"># Just in case one installs a package with pip instead of conda and pip</span>
         <span class="c1"># needs to compile some C sources</span>
@@ -234,6 +214,9 @@ Conda in <code>~/.conda-shell.nix</code>:</p>
 <span class="s1">      # Paths for gcc if compiling some C sources with pip</span>
 <span class="s1">      export NIX_CFLAGS_COMPILE="-I</span><span class="si">${</span>installationPath<span class="si">}</span><span class="s1">/include"</span>
 <span class="s1">      export NIX_CFLAGS_LINK="-L</span><span class="si">${</span>installationPath<span class="si">}</span><span class="s1">lib"</span>
+<span class="s1">      # Some other required environment variables</span>
+<span class="s1">      export FONTCONFIG_FILE=/etc/fonts/fonts.conf</span>
+<span class="s1">      export QTCOMPOSE=</span><span class="si">${</span>pkgs<span class="o">.</span>xorg<span class="o">.</span>libX11<span class="si">}</span><span class="s1">/share/X11/locale</span>
 <span class="s1">    ''</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">)</span><span class="o">.</span>env
@@ -279,6 +262,8 @@ be closed by typing simply <code>exit</code>.</p>
 I'd be glad to hear about any such ideas. I'd be interested to know if this
 could be modified for inclusion in <code>nixpkgs</code>, thus making Conda easily
 accessible to all NixOS users.</p>
+<p><em>Updated 2017-05-27: Added some libraries and environment variables to the
+configuration in order to support Spyder.</em></p>
 <div class="footnote">
 <hr>
 <ol>

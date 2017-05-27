@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conda on NixOS | Jaakko Luttinen</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="http://www.jaakkoluttinen.fi/blog/conda-on-nixos/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+<meta name="author" content="Jaakko Luttinen">
+<link rel="prev" href="../sharing-interactive-jupyter-ipython-notebooks-with-binder/" title="Sharing interactive Jupyter (IPython) Notebooks with Binder" type="text/html">
+<meta property="og:site_name" content="Jaakko Luttinen">
+<meta property="og:title" content="Conda on NixOS">
+<meta property="og:url" content="http://www.jaakkoluttinen.fi/blog/conda-on-nixos/">
+<meta property="og:description" content="We've been using Conda (also known as Anaconda1 or
+Miniconda2) to manage our Python environments
+at Leanheat. However, Conda doesn't work
+on NixOS, a Linux distribution I recently started using.
+After">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-05-27T16:36:15+03:00">
+<meta property="article:tag" content="Conda">
+<meta property="article:tag" content="NixOS">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.jaakkoluttinen.fi/">
+
+                <span id="blog-title">Jaakko Luttinen</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../">Blog</a>
+                </li>
+<li>
+<a href="../../archive/">Archive</a>
+                </li>
+<li>
+<a href="../../about/">About</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.md" id="sourcelink">Source</a>
+    </li>
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Conda on NixOS</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn">
+                    Jaakko Luttinen
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-05-27T16:36:15+03:00" itemprop="datePublished" title="2017-05-27 16:36">2017-05-27 16:36</time></a></p>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/conda-on-nixos.html">Comments</a>
+
+
+                    </p>
+<p class="sourceline"><a href="index.md" id="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>We've been using <a href="https://conda.io/">Conda</a> (also known as Anaconda<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> or
+Miniconda<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup>) to manage our Python environments
+at <a href="http://leanheat.com/">Leanheat</a>. However, Conda doesn't work
+on <a href="https://nixos.org/">NixOS</a>, a Linux distribution I recently started using.
+After some studying, I found a way to install and use Conda on NixOS, which I
+thought I'd share here.</p>
+<!-- TEASER_END -->
+
+<p>NixOS is quite different from other Linux distributions: the system (including
+applications and services) is configured by writing a specification which is
+then "activated". This has a lot of benefits in system maintenance. One of the
+main differences in NixOS to traditional Linux distributions is the lack of many
+standard directories such as <code>/usr/bin</code> and <code>/usr/lib</code>. Instead, all packages
+are kept in a separate directory called Nix store and environments are created
+by adding the selected binaries to the search path. Thus, it is possible to have
+different versions of packages in Nix store and use different sets of packages
+in different environments.</p>
+<!-- Conda (also known as Anaconda or Miniconda) is a popular cross-platform binary -->
+
+<!-- package manager. It is mainly targeted to Python users making it easy to create -->
+
+<!-- environments with specific versions of packages (or even Python itself). It is -->
+
+<!-- similar to what can be achieved with pip and virtualenv but one doesn't need to -->
+
+<!-- worry about compiling complex packages such as NumPy from source as Conda -->
+
+<!-- distributes them as binaries with all the necessary non-Python library -->
+
+<!-- dependencies. With Conda, it is extremely easy to create identical environments -->
+
+<!-- in very different systems, for instance, a recent Ubuntu version, an old Ubuntu -->
+
+<!-- version and even Windows. Thus, it is no wonder that Conda has become such a -->
+
+<!-- popular tool. -->
+
+<!-- However, using third party binaries is problematic because they e -->
+
+<!-- perhaps, here the problems with third party binaries. then conda. -->
+
+<p>However, using third-party binaries such as Conda on NixOS turns out to be
+non-trivial because the binaries expect to find the dynamic linker in
+<code>/lib64/ld-linux-x86-64.so.2</code>, which doesn't exist on NixOS. It is relatively
+straightforward to fix this kind of issues by
+using <a href="https://nixos.org/patchelf.html">PatchELF</a> to patch the binaries. This
+approach usually works with third-party binaries but it becomes a mess with
+Conda because it is a package manager which installs and upgrades packages on
+its own. One would need to patch all the packages that Conda installs and I'm
+not sure there is an easy way to achieve that.</p>
+<p>Fortunately, there is another way to use Conda on NixOS: instead of patching the
+binaries, create an environment which is FHS compatible so that it has the
+standard directories for system libraries and binaries. This solution was
+suggested for Steam in
+a
+<a href="http://sandervanderburg.blogspot.fi/2013/09/composing-fhs-compatible-chroot.html">Sander van der Burg's blog post</a>.
+I recommend you read that post if you are interested in more details. FHS
+compatible environments can be created on NixOS with a function
+<code>buildFHSUserEnv</code>. I wrote a nix expression defining an environment that enables
+Conda in <code>~/.conda-shell.nix</code>:</p>
+<pre class="code literal-block"><span></span><span class="p">{</span> pkgs <span class="o">?</span> <span class="nb">import</span> <span class="l">&lt;nixpkgs&gt;</span> <span class="p">{}</span> <span class="p">}:</span>
+
+<span class="k">let</span>
+
+  <span class="c1"># Conda installs it's packages and environments under this directory</span>
+  <span class="ss">installationPath =</span> <span class="s2">"~/.conda"</span><span class="p">;</span>
+
+  <span class="c1"># Downloaded Miniconda installer</span>
+  <span class="ss">minicondaScript =</span> pkgs<span class="o">.</span>stdenv<span class="o">.</span>mkDerivation <span class="k">rec</span> <span class="p">{</span>
+    <span class="ss">name =</span> <span class="s2">"miniconda-</span><span class="si">${</span>version<span class="si">}</span><span class="s2">"</span><span class="p">;</span>
+    <span class="ss">version =</span> <span class="s2">"4.3.11"</span><span class="p">;</span>
+    <span class="ss">src =</span> pkgs<span class="o">.</span>fetchurl <span class="p">{</span>
+      <span class="ss">url =</span> <span class="s2">"https://repo.continuum.io/miniconda/Miniconda3-</span><span class="si">${</span>version<span class="si">}</span><span class="s2">-Linux-x86_64.sh"</span><span class="p">;</span>
+      <span class="ss">sha256 =</span> <span class="s2">"1f2g8x1nh8xwcdh09xcra8vd15xqb5crjmpvmc2xza3ggg771zmr"</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="c1"># Nothing to unpack.</span>
+    <span class="ss">unpackPhase =</span> <span class="s2">"true"</span><span class="p">;</span>
+    <span class="c1"># Rename the file so it's easier to use. The file needs to have .sh ending</span>
+    <span class="c1"># because the installation script does some checks based on that assumption.</span>
+    <span class="c1"># However, don't add it under $out/bin/ becase we don't really want to use</span>
+    <span class="c1"># it within our environment. It is called by "conda-install" defined below.</span>
+    <span class="ss">installPhase =</span> <span class="s1">''</span>
+<span class="s1">      mkdir -p $out</span>
+<span class="s1">      cp $src $out/miniconda.sh</span>
+<span class="s1">    ''</span><span class="p">;</span>
+    <span class="c1"># Add executable mode here after the fixup phase so that no patching will be</span>
+    <span class="c1"># done by nix because we want to use this miniconda installer in the FHS</span>
+    <span class="c1"># user env.</span>
+    <span class="ss">fixupPhase =</span> <span class="s1">''</span>
+<span class="s1">      chmod +x $out/miniconda.sh</span>
+<span class="s1">    ''</span><span class="p">;</span>
+  <span class="p">};</span>
+
+  <span class="c1"># Wrap miniconda installer so that it is non-interactive and installs into the</span>
+  <span class="c1"># path specified by installationPath</span>
+  <span class="ss">conda =</span> pkgs<span class="o">.</span>runCommand <span class="s2">"conda-install"</span>
+    <span class="p">{</span> <span class="ss">buildInputs =</span> <span class="p">[</span> pkgs<span class="o">.</span>makeWrapper minicondaScript <span class="p">];</span> <span class="p">}</span>
+    <span class="s1">''</span>
+<span class="s1">      mkdir -p $out/bin</span>
+<span class="s1">      makeWrapper                            \</span>
+<span class="s1">        </span><span class="si">${</span>minicondaScript<span class="si">}</span><span class="s1">/miniconda.sh      \</span>
+<span class="s1">        $out/bin/conda-install               \</span>
+<span class="s1">        --add-flags "-p </span><span class="si">${</span>installationPath<span class="si">}</span><span class="s1">" \</span>
+<span class="s1">        --add-flags "-b"</span>
+<span class="s1">    ''</span><span class="p">;</span>
+
+<span class="k">in</span>
+<span class="p">(</span>
+  pkgs<span class="o">.</span>buildFHSUserEnv <span class="p">{</span>
+    <span class="ss">name =</span> <span class="s2">"conda"</span><span class="p">;</span>
+    <span class="ss">targetPkgs =</span> pkgs<span class="p">:</span> <span class="p">(</span>
+      <span class="k">with</span> pkgs<span class="p">;</span> <span class="p">[</span>
+
+        conda
+
+        <span class="c1"># Missing libraries for IPython. I found these using:</span>
+        <span class="c1"># `LD_DEBUG=libs ipython --pylab`</span>
+        xorg<span class="o">.</span>libSM
+        xorg<span class="o">.</span>libICE
+        xorg<span class="o">.</span>libXrender
+
+        <span class="c1"># Just in case one installs a package with pip instead of conda and pip</span>
+        <span class="c1"># needs to compile some C sources</span>
+        gcc
+
+        <span class="c1"># Add any other packages here, for instance:</span>
+        emacs
+        git
+
+      <span class="p">]</span>
+    <span class="p">);</span>
+    <span class="ss">profile =</span> <span class="s1">''</span>
+<span class="s1">      # Add conda to PATH</span>
+<span class="s1">      export PATH=</span><span class="si">${</span>installationPath<span class="si">}</span><span class="s1">/bin:$PATH</span>
+<span class="s1">      # Paths for gcc if compiling some C sources with pip</span>
+<span class="s1">      export NIX_CFLAGS_COMPILE="-I</span><span class="si">${</span>installationPath<span class="si">}</span><span class="s1">/include"</span>
+<span class="s1">      export NIX_CFLAGS_LINK="-L</span><span class="si">${</span>installationPath<span class="si">}</span><span class="s1">lib"</span>
+<span class="s1">    ''</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">)</span><span class="o">.</span>env
+</pre>
+
+
+<p>This environment can be activated with <code>nix-shell ~/.conda-shell.nix</code>. It adds
+an executable <code>conda-install</code> which should be run in order to install Miniconda
+under <code>~/.conda</code>. After running <code>conda-install</code>, Conda can be used normally. For
+instance, create a new environment with <code>conda create -n myenv ipython numpy</code>
+and activate an environment with <code>source activate myenv</code>. The "Conda shell" can
+be closed by typing simply <code>exit</code>.</p>
+<p>To make the activation of the environment even simpler in Bash, I added to
+<code>~/.bashrc</code>:</p>
+<pre class="code literal-block"><span></span><span class="k">function</span> conda-shell <span class="o">{</span>
+    nix-shell ~/.conda-shell.nix
+<span class="o">}</span>
+</pre>
+
+
+<p>Now the environment can be activated by writing <code>conda-shell</code>.</p>
+<p>Some random thoughts:</p>
+<ul>
+<li>
+<p>Although I think Nix is in many ways better than Conda, I still feel Conda
+  makes it easier to install specific versions of (Python) packages and to
+  maintain identical setups among non-NixOS systems. Also, if a team uses Conda,
+  it is a bit difficult to make the others use Nix so I just needed to find a
+  way to use Conda on NixOS.</p>
+</li>
+<li>
+<p>I didn't want the activation of the Conda shell environment to have any side
+  effects on the system so I didn't install Miniconda automatically during the
+  activation but added an explicit installer instead.</p>
+</li>
+<li>
+<p>If I want to use the Conda environments in Emacs, I need to launch Emacs from
+  the "Conda shell" in terminal. Thus, I added Emacs to the list of installed
+  packages in Conda shell.</p>
+</li>
+</ul>
+<p>As I'm new to NixOS, there must be many possible improvements to this solution.
+I'd be glad to hear about any such ideas. I'd be interested to know if this
+could be modified for inclusion in <code>nixpkgs</code>, thus making Conda easily
+accessible to all NixOS users.</p>
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn-1">
+<p>Anaconda is a comprehensive Conda installer containing Python, Conda and a
+large number of other packages. <a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">↩</a></p>
+</li>
+<li id="fn-2">
+<p>Miniconda is a minimal Conda installer containing Python, Conda and their
+dependencies. <a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">↩</a></p>
+</li>
+</ol>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/conda/" rel="tag">Conda</a></li>
+            <li><a class="tag p-category" href="../../categories/nixos/" rel="tag">NixOS</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../sharing-interactive-jupyter-ipython-notebooks-with-binder/" rel="prev" title="Sharing interactive Jupyter (IPython) Notebooks with Binder">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+                        <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="jaakkoluttinen",
+            disqus_url="http://www.jaakkoluttinen.fi/blog/conda-on-nixos/",
+        disqus_title="Conda on NixOS",
+        disqus_identifier="cache/posts/conda-on-nixos.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+        </section></article><script>var disqus_shortname="jaakkoluttinen";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer"><div class="text-center">
+<p>
+
+<span class="fa-stack fa-2x">
+  <a href="../../rss.xml">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://twitter.com/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-twitter fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://github.com/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-github fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="https://www.linkedin.com/in/jluttine">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-linkedin fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+<span class="fa-stack fa-2x">
+  <a href="mailto:jaakko.luttinen@iki.fi">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+
+</p>
+<p>
+  Contents © 2017  <a href="mailto:jaakko.luttinen@iki.fi">Jaakko Luttinen</a>
+  —
+  
+<a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+  <img alt="Creative Commons License BY" style="border-width:0; margin-bottom:12px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png"></a>
+
+  —
+  Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
+</p>
+</div>
+  
+            
+        </footer>
+</div>
+</div>
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

@@ -5,14 +5,14 @@ article: http://ogp.me/ns/article#
 " lang="en">
 <head>
 <meta charset="utf-8">
-<base href="http://www.jaakkoluttinen.fi/blog/">
 <meta name="description" content="Bayesian Data Science with Python">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blog | Jaakko Luttinen</title>
 <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
-<meta content="#5670d4" name="theme-color">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
 <link rel="canonical" href="http://www.jaakkoluttinen.fi/blog/">
 <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -62,10 +62,33 @@ article: http://ogp.me/ns/article#
         <!--Body content-->
         <div class="row">
             
+    
 <div class="postindex">
-    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="sharing-interactive-jupyter-ipython-notebooks-with-binder/" class="u-url">Sharing interactive Jupyter (IPython) Notebooks with Binder</a></h1>
+    <article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="conda-on-nixos/" class="u-url">Conda on NixOS</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Jaakko Luttinen
+            </span></p>
+            <p class="dateline"><a href="conda-on-nixos/" rel="bookmark"><time class="published dt-published" datetime="2017-05-27T16:36:15+03:00" title="2017-05-27 16:36">2017-05-27 16:36</time></a></p>
+                <p class="commentline">            <a href="conda-on-nixos/#disqus_thread" data-disqus-identifier="cache/posts/conda-on-nixos.html">Comments</a>
+
+
+        </p>
+</div>
+    </header><div class="p-summary entry-summary">
+    <div>
+<p>We've been using <a href="https://conda.io/">Conda</a> (also known as Anaconda<sup id="fnref-1"><a class="footnote-ref" href="conda-on-nixos/#fn-1">1</a></sup> or
+Miniconda<sup id="fnref-2"><a class="footnote-ref" href="conda-on-nixos/#fn-2">2</a></sup>) to manage our Python environments
+at <a href="http://leanheat.com/">Leanheat</a>. However, Conda doesn't work
+on <a href="https://nixos.org/">NixOS</a>, a Linux distribution I recently started using.
+After some studying, I found a way to install and use Conda on NixOS, which I
+thought I'd share here.</p>
+<p class="more"><a href="conda-on-nixos/">Read more…</a></p>
+</div>
+    </div>
+    </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="sharing-interactive-jupyter-ipython-notebooks-with-binder/" class="u-url">Sharing interactive Jupyter (IPython) Notebooks with Binder</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Jaakko Luttinen
             </span></p>
             <p class="dateline"><a href="sharing-interactive-jupyter-ipython-notebooks-with-binder/" rel="bookmark"><time class="published dt-published" datetime="2015-11-15T12:43:44+02:00" title="2015-11-15 12:43">2015-11-15 12:43</time></a></p>
@@ -93,7 +116,7 @@ article: http://ogp.me/ns/article#
     </div>
     </article><article class="h-entry post-text"><header><h1 class="p-name entry-title"><a href="how-to-blog-with-jupyter-ipython-notebook-and-nikola/" class="u-url">How to blog with Jupyter (IPython) Notebook and Nikola</a></h1>
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Jaakko Luttinen
             </span></p>
             <p class="dateline"><a href="how-to-blog-with-jupyter-ipython-notebook-and-nikola/" rel="bookmark"><time class="published dt-published" datetime="2015-11-10T22:05:01+02:00" title="2015-11-10 22:05">2015-11-10 22:05</time></a></p>
@@ -126,9 +149,9 @@ my own tips on setting up Nikola.</p>
     </article>
 </div>
 
-               <script>var disqus_shortname="jaakkoluttinen";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/contrib/auto-render.min.js"></script><script>
-                renderMathInElement(document.body);
-            </script>
+               <script>var disqus_shortname="jaakkoluttinen";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script><script>
+                    renderMathInElement(document.body);
+                </script>
 </div>
         <!--End of body content-->
 
@@ -172,7 +195,7 @@ my own tips on setting up Nikola.</p>
 
 </p>
 <p>
-  Contents © 2015  <a href="mailto:jaakko.luttinen@iki.fi">Jaakko Luttinen</a>
+  Contents © 2017  <a href="mailto:jaakko.luttinen@iki.fi">Jaakko Luttinen</a>
   —
   
 <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">

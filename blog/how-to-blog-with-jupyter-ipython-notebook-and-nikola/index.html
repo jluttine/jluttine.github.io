@@ -5,13 +5,13 @@ article: http://ogp.me/ns/article#
 " lang="en">
 <head>
 <meta charset="utf-8">
-<base href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to blog with Jupyter (IPython) Notebook and Nikola | Jaakko Luttinen</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
-<meta content="#5670d4" name="theme-color">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -90,7 +90,7 @@ excited that I finall">
                     Jaakko Luttinen
             </span></p>
             <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2015-11-10T22:05:01+02:00" itemprop="datePublished" title="2015-11-10 22:05">2015-11-10 22:05</time></a></p>
-                <p class="commentline">            <a href=".#disqus_thread" data-disqus-identifier="cache/posts/how-to-blog-with-jupyter-ipython-notebook-and-nikola.html">Comments</a>
+                <p class="commentline">            <a href="#disqus_thread" data-disqus-identifier="cache/posts/how-to-blog-with-jupyter-ipython-notebook-and-nikola.html">Comments</a>
 
 
                     </p>
@@ -126,18 +126,18 @@ instance, <a href="https://www.continuum.io/downloads">Anaconda</a>).  I recomme
 <a href="https://virtualenvwrapper.readthedocs.org/en/latest/">Virtualenvwrapper</a> for
 setting up a virtual environment for the blog.  After installing the packages,
 run the following command and put it to your shell startup file:</p>
-<pre class="code literal-block">source virtualenvwrapper.sh
+<pre class="code literal-block"><span></span>source virtualenvwrapper.sh
 </pre>
 
 
 <p>Create (and activate) a virtual environment:</p>
-<pre class="code literal-block">mkdir -p /path/to/blog
+<pre class="code literal-block"><span></span>mkdir -p /path/to/blog
 mkvirtualenv --system-site-packages -a /path/to/blog blog
 </pre>
 
 
 <p>Install Nikola to your virtual environment with some useful extra packages:</p>
-<pre class="code literal-block">pip install nikola[extras]
+<pre class="code literal-block"><span></span>pip install nikola[extras]
 </pre>
 
 
@@ -145,12 +145,12 @@ mkvirtualenv --system-site-packages -a /path/to/blog blog
 <code>workon blog</code>.</p>
 <h2>Create the site</h2>
 <p>Assuming that you are in the directory of your blog project, initialize Nikola:</p>
-<pre class="code literal-block">nikola init .
+<pre class="code literal-block"><span></span>nikola init .
 </pre>
 
 
 <p>Edit conf.py and modify <code>POSTS</code> and <code>PAGES</code> as follows:</p>
-<pre class="code literal-block">POSTS = (
+<pre class="code literal-block"><span></span>POSTS = (
     ("posts/*.ipynb", "blog", "post.tmpl"),
     ("posts/*.md", "blog", "post.tmpl"),
     ("posts/*.rst", "blog", "post.tmpl"),
@@ -173,39 +173,39 @@ format is specified explicitly.  Also, the blog posts would be located in
 <p>I recommend you use git and <a href="https://github.com/">GitHub</a> because it makes
 publishing and sharing your blog posts and notebooks easy.  The repository can
 be initialized as:</p>
-<pre class="code literal-block">git init
+<pre class="code literal-block"><span></span>git init
 git add *
 git commit -am "Initial commit"
 </pre>
 
 
 <p>Push your code to a GitHub repository:</p>
-<pre class="code literal-block">git remote add origin https://github.com/USERNAME/PROJECTNAME.git
+<pre class="code literal-block"><span></span>git remote add origin https://github.com/USERNAME/PROJECTNAME.git
 git push origin -u
 </pre>
 
 
 <h2>Create content</h2>
 <p>Create your first blog post:</p>
-<pre class="code literal-block">nikola new_post -f ipynb
+<pre class="code literal-block"><span></span>nikola new_post -f ipynb
 </pre>
 
 
 <p>Create your first page (for instance, "About"):</p>
-<pre class="code literal-block">nikola new_page -f markdown
+<pre class="code literal-block"><span></span>nikola new_page -f markdown
 </pre>
 
 
 <p>It isn't necessary to specify <code>-f format</code> if you want to use the default
 format. In order to edit the blog post, launch Jupyter Notebook:</p>
-<pre class="code literal-block">jupyter notebook posts
+<pre class="code literal-block"><span></span>jupyter notebook posts
 </pre>
 
 
 <p>Note that you may need to use <code>ipython</code> instead of <code>jupyter</code> if you have an old
 version installed.  In order to see your site, use Nikola to automatically
 refresh your site at http://127.0.0.1:8000/:</p>
-<pre class="code literal-block">nikola auto
+<pre class="code literal-block"><span></span>nikola auto
 </pre>
 
 
@@ -219,19 +219,19 @@ instructions for that, but you could use any other location and define your own
 <code>DEPLOY_COMMANDS</code> (in <code>conf.py</code>) to be used when running <code>nikola deploy</code>. For
 GitHub pages, you can use <code>nikola github_deploy</code> after defining a few
 parameters:</p>
-<pre class="code literal-block">GITHUB_SOURCE_BRANCH = 'master'
+<pre class="code literal-block"><span></span>GITHUB_SOURCE_BRANCH = 'master'
 GITHUB_DEPLOY_BRANCH = 'gh-pages'
 GITHUB_REMOTE_NAME = 'origin'
 </pre>
 
 
 <p>If you are using a custom domain name, add <code>CNAME</code> to <code>files</code> directory:</p>
-<pre class="code literal-block">echo mycustomdomain.com &gt; files/CNAME
+<pre class="code literal-block"><span></span>echo mycustomdomain.com &gt; files/CNAME
 </pre>
 
 
 <p>Deploy the static site to GitHub:</p>
-<pre class="code literal-block">nikola github_deploy
+<pre class="code literal-block"><span></span>nikola github_deploy
 </pre>
 
 
@@ -244,7 +244,7 @@ ideas on how to improve the settings.</p>
 <a href="https://bootswatch.com/">Bootswatch</a> offers free themes which can be easily
 used in your Nikola project.  After choosing the Bootswatch theme, create your
 custom theme:</p>
-<pre class="code literal-block">nikola bootswatch_theme -n YOUR_THEME_NAME -s BOOTSWATCH_THEME_NAME -p bootstrap3-jinja
+<pre class="code literal-block"><span></span>nikola bootswatch_theme -n YOUR_THEME_NAME -s BOOTSWATCH_THEME_NAME -p bootstrap3-jinja
 </pre>
 
 
@@ -252,7 +252,7 @@ custom theme:</p>
 choose any other <a href="https://themes.getnikola.com/">Nikola theme</a>.  But don't use
 <code>ipython</code> theme, that's not supported (thanks to Chris Warrick for pointing this
 out).  Now modify your <code>conf.py</code> to use the new custom theme:</p>
-<pre class="code literal-block">THEME = "YOUR_THEME_NAME"
+<pre class="code literal-block"><span></span>THEME = "YOUR_THEME_NAME"
 </pre>
 
 
@@ -260,13 +260,13 @@ out).  Now modify your <code>conf.py</code> to use the new custom theme:</p>
 <p>If you want to use social media icons from <a href="https://fortawesome.github.io/Font-Awesome/">Font
 Awesome</a>, add the following
 definition to <code>conf.py</code>:</p>
-<pre class="code literal-block">EXTRA_HEAD_DATA = '&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"&gt;'
+<pre class="code literal-block"><span></span>EXTRA_HEAD_DATA = '&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"&gt;'
 </pre>
 
 
 <p>Then you can add some social media icons and links, for instance, to the footer
 by adding the following lines to <code>conf.py</code>:</p>
-<pre class="code literal-block">CONTENT_FOOTER = '''
+<pre class="code literal-block"><span></span>CONTENT_FOOTER = '''
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-center"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;p&gt;</span>
 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"fa-stack fa-2x"</span><span class="nt">&gt;</span>
@@ -316,7 +316,7 @@ by adding the following lines to <code>conf.py</code>:</p>
 <h3>Write math</h3>
 <p>You can write math in your blog either inline as <code>\\( X \sim N(\mu, \sigma) \\)</code>
 which looks like \( X \sim N(\mu, \sigma) \) or in display mode as</p>
-<pre class="code literal-block">\\[
+<pre class="code literal-block"><span></span>\\[
 N(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 \\]
 </pre>
@@ -330,7 +330,7 @@ N(x|\mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 support for a very promising fast math renderer called
 <a href="http://khan.github.io/KaTeX/">KaTeX</a>.  In order to use KaTeX, use the following
 settings:</p>
-<pre class="code literal-block">EXTRA_HEAD_DATA = """
+<pre class="code literal-block"><span></span>EXTRA_HEAD_DATA = """
 ... (possibly other links here too, for instance, Font Awesome) ...
 &lt;link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"&gt;
 """
@@ -344,7 +344,7 @@ add <code>mathjax</code> tag to your post to get the math rendered - even if you
 KaTeX.</p>
 <h3>Add a license</h3>
 <p>You can also add a license for your content:</p>
-<pre class="code literal-block">LICENSE = """
+<pre class="code literal-block"><span></span>LICENSE = """
 <span class="nt">&lt;a</span> <span class="na">rel=</span><span class="s">"license"</span> <span class="na">href=</span><span class="s">"https://creativecommons.org/licenses/by-sa/4.0/"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">"Creative Commons License BY-SA"</span>
        <span class="na">style=</span><span class="s">"border-width:0; margin-bottom:12px;"</span>
@@ -358,13 +358,13 @@ KaTeX.</p>
 <p>This is just a small annoyance, but by default, the archive is located in
 <code>/archive.html</code>.  If you want it to be in <code>/archive/</code>, add the following lines
 to your <code>conf.py</code>:</p>
-<pre class="code literal-block">ARCHIVE_PATH = "archive"
+<pre class="code literal-block"><span></span>ARCHIVE_PATH = "archive"
 ARCHIVE_FILENAME = "index.html"
 </pre>
 
 
 <p>Remember to also fix the navigation links:</p>
-<pre class="code literal-block">NAVIGATION_LINKS = {
+<pre class="code literal-block"><span></span>NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/archive/", "Archive"),
         ("/categories/", "Tags"),
@@ -379,12 +379,12 @@ ARCHIVE_FILENAME = "index.html"
 <p>Here are some other configuration suggestions for you to consider.  If you want
 the archive to show all your blog posts as a single list instead of a year and
 month based hierarchy, use the following setting:</p>
-<pre class="code literal-block">CREATE_SINGLE_ARCHIVE = True
+<pre class="code literal-block"><span></span>CREATE_SINGLE_ARCHIVE = True
 </pre>
 
 
 <p>To show only short teasers instead of full posts on index pages:</p>
-<pre class="code literal-block">INDEX_TEASERS = True
+<pre class="code literal-block"><span></span>INDEX_TEASERS = True
 </pre>
 
 
@@ -425,17 +425,17 @@ related to sharing notebooks.</p>
         };
         (function() {
             var dsq = document.createElement('script'); dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-    </script><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
-    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section><script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/katex.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.3.0/contrib/auto-render.min.js"></script><script>
-                renderMathInElement(document.body);
-            </script></article><script>var disqus_shortname="jaakkoluttinen";(function(){var a=document.createElement("script");a.async=true;a.src="//"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
+        </section><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script><script>
+                    renderMathInElement(document.body);
+                </script></article><script>var disqus_shortname="jaakkoluttinen";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script>
 </div>
         <!--End of body content-->
 
@@ -479,7 +479,7 @@ related to sharing notebooks.</p>
 
 </p>
 <p>
-  Contents © 2015  <a href="mailto:jaakko.luttinen@iki.fi">Jaakko Luttinen</a>
+  Contents © 2017  <a href="mailto:jaakko.luttinen@iki.fi">Jaakko Luttinen</a>
   —
   
 <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
